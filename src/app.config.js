@@ -20,6 +20,8 @@ export default defineAppConfig({
         "ApplyMedicineInfo/index",
         "SignIn/index",
         "CertificateCode/index",
+        "ShopSearch/index",
+        "AcceptReplacement/index",
       ],
     },
   ],

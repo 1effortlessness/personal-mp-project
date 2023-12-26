@@ -1,4 +1,5 @@
 import PageWithTabBar from "@/components/PageWithTabBar";
+import { Button } from "@antmjs/vantui";
 import { View, Text } from "@tarojs/components";
 import classNames from "classnames";
 
@@ -17,14 +18,42 @@ const CertificateCode = () => {
           {/* 二维码 */}
           <View className="w-[312px] h-[312px] bg-red"></View>
 
+          {/* tip */}
           <Text className="text-red mt-[10px] text-[26px]">
             *请您先联系药店预约，再去领药
           </Text>
         </View>
 
         <Divider className="my-[24px]" />
+
+        {/* basic info */}
+        <View className="flex flex-col gap-2">
+          <DescCell label={"代领人"} value={"朱领领"} />
+          <DescCell label={"使用期限"} value={"2023.08.08 至 2024.01.10"} />
+          <DescCell
+            label={"注意事项"}
+            value={"请携带委托书、身份证原件去药店领药"}
+          />
+        </View>
+      </View>
+      <View className="mt-[48px]">
+        <Button round type="primary" block>
+          查找药房
+        </Button>
       </View>
     </PageWithTabBar>
+  );
+};
+
+const DescCell = ({ label, value }) => {
+  return (
+    <View className="flex items-center">
+      <View className="w-[132px] flex-shrink-0 text-[26px] font-bold">
+        {label}
+      </View>
+
+      <View className="flex-grow text-[26px] font-medium">{value}</View>
+    </View>
   );
 };
 

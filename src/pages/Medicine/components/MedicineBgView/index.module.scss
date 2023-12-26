@@ -8,3 +8,7 @@
   text-shadow: 2px 2px 0px #07114a;
   background: linear-gradient(120deg, #013576 0%, #2774ca 100%);
 }
+
+.safeAreaView {
+  height: calc(100vh - 100px - env(safe-area-inset-bottom));
+}

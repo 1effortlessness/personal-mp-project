@@ -11,7 +11,7 @@ definePageConfig({
 const Medicine = () => {
   return (
     <PageWithTabBar>
-      <CancelConversionMedicine />
+      <NoPermissionGetMedicine />
     </PageWithTabBar>
   );
 };

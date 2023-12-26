@@ -5,7 +5,7 @@ import { Button } from "@antmjs/vantui";
 /** @description 接受药品转增 */
 const AcceptConversionMedicine = () => {
   return (
-    <MedicineBgView className="pb-[48px]">
+    <MedicineBgView>
       <DescCard title="" className="mt-[608px] flex flex-col items-center">
         XXX医生给您赠送一支
         <View>地舒单抗注射液（鲁可欣®）</View>
@@ -24,7 +24,7 @@ const AcceptConversionMedicine = () => {
       </DescCard>
       <View className="w-full my-[48px] px-[64px]">
         <Button type="primary" block>
-          登陆领药
+          注册领药
         </Button>
       </View>
     </MedicineBgView>
