@@ -4,6 +4,14 @@ module.exports = {
   // 比如你使用 vue3 项目，你就需要把 vue 这个格式也包括进来
   // 不在 content glob表达式中包括的文件，在里面编写tailwindcss class，是不会生成对应的css工具类的
   content: ['./public/index.html', './src/**/*.{html,js,ts,jsx,tsx}'],
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      primary: {
+        DEFAULT: '#00499D'
+      }
+    }
+  },
   // 其他配置项 ...
   corePlugins: {
     // 小程序不需要 preflight，因为这主要是给 h5 的，如果你要同时开发多端，你应该使用 process.env.TARO_ENV 环境变量来控制它

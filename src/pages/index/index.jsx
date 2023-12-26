@@ -1,7 +1,7 @@
-import { View, Text } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
-import "./index.scss";
 import { Button } from "@antmjs/vantui";
+import "./index.scss";
 
 export default function Index() {
   useLoad(() => {
@@ -10,9 +10,18 @@ export default function Index() {
 
   return (
     <View className="index">
-      <Text>Hello world!</Text>
-      <Button type="primary">test</Button>
-      <View className="text-[#acc855] text-[100px]">Hello world!</View>
+      <View>
+        <View>primary button with rounded corners</View>
+        <Button type="primary" round className="w-[182px]">button</Button>
+      </View>
+      <View>
+        <View>text button</View>
+        <Button>button</Button>
+      </View>
+      <View>
+        <View>outline button</View>
+        <Button></Button>
+      </View>
     </View>
   );
 }
