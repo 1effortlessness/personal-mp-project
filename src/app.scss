@@ -1,3 +1,12 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+page {
+  @apply bg-under;
+}
+
+.vant-form-formItem {
+  padding: 12px 0 !important;
+  margin: 0 !important;
+}

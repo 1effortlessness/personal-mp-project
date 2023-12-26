@@ -1,18 +1,11 @@
-import { View, Text } from "@tarojs/components";
-import { useLoad } from "@tarojs/taro";
+import { Text } from "@tarojs/components";
 import "./index.scss";
-import { Button } from "@antmjs/vantui";
+import PageWithTabBar from "@/components/PageWithTabBar";
 
 export default function Index() {
-  useLoad(() => {
-    console.log("Page loaded.");
-  });
-
   return (
-    <View className="index">
-      <Text>Hello world!</Text>
-      <Button type="primary">test</Button>
-      <View className="text-[#acc855] text-[100px]">Hello world!</View>
-    </View>
+    <PageWithTabBar>
+      <Text className="text-[100px]">Hello world!</Text>
+    </PageWithTabBar>
   );
 }

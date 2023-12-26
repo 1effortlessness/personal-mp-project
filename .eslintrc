@@ -4,8 +4,10 @@
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "import/no-commonjs": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "import/first": "warn",
-    "jsx-quotes": "off"
-  }
+    "jsx-quotes": "off",
+    "comma-dangle": ["error", "never"]
+  },
+  "parser": "babel-eslint"
 }
