@@ -14,6 +14,7 @@ function Bootstrap({ children }) {
   useLaunch(() => {
     console.log("App launched.");
   });
+
   return children;
 }
 

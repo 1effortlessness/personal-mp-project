@@ -1,0 +1,6 @@
+// hack way to custom vant css variables
+// more variables check here: https://github.com/AntmJS/vantui/blob/main/packages/vantui/src/style/var.less
+:root,
+page > view:first-child  {
+  --primary-color: #00499D;
+}
