@@ -27,5 +27,6 @@ const queryStringify = (params ) => {
 }
 
 export const login = () => {
+  // @ts-ignore
   route('Login', {redirect: true})
 }

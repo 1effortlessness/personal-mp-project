@@ -5,9 +5,8 @@
     "react/react-in-jsx-scope": "off",
     "import/no-commonjs": "off",
     "no-unused-vars": "warn",
-    "import/first": "warn",
+    "import/first": "off",
     "jsx-quotes": "off",
-    "comma-dangle": ["error", "never"]
-  },
-  "parser": "babel-eslint"
+    "comma-dangle": "warn"
+  }
 }
