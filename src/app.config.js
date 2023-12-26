@@ -1,21 +1,45 @@
 // eslint-disable-next-line no-undef
 export default defineAppConfig({
   pages: [
-    'pages/index/index'
+    "pages/index/index",
+    "pages/Medicine/index",
+    "pages/Certificate/index",
   ],
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTitleText: "WeChat",
+    navigationBarTextStyle: "black",
   },
   subpackages: [
     {
-      root: 'doctor-packages',
-      name: 'doctor',
+      root: "doctor-packages",
+      name: "doctor",
       pages: [
-        "PatientSignUp/index"
-      ]
-    }
-  ]
-})
+        "PatientSignUp/index",
+        "ApplyMedicineInfo/index",
+        "SignIn/index",
+        "CertificateCode/index",
+        "ShopSearch/index",
+        "AcceptReplacement/index",
+      ],
+    },
+  ],
+  tabBar: {
+    custom: true,
+    list: [
+      {
+        text: "领药",
+        pagePath: "pages/Medicine/index",
+      },
+      {
+        text: "首页",
+        pagePath: "pages/index/index",
+      },
+      {
+        text: "兑换券",
+        pagePath: "pages/Certificate/index",
+      },
+    ],
+  },
+});

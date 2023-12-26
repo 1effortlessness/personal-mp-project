@@ -6,6 +6,8 @@
     "import/no-commonjs": "off",
     "no-unused-vars": "warn",
     "import/first": "warn",
-    "jsx-quotes": "off"
-  }
+    "jsx-quotes": "off",
+    "comma-dangle": ["error", "never"]
+  },
+  "parser": "babel-eslint"
 }
