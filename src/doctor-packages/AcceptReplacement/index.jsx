@@ -1,11 +1,11 @@
 import PageWithTabBar from "@/components/PageWithTabBar";
 import MedicineBgView, {
-  DescCard,
+  DescCard
 } from "@/pages/Medicine/components/MedicineBgView";
 import { Button } from "@antmjs/vantui";
 import { View } from "@tarojs/components";
 
-// 药代接受授权
+/** @description 药代接受授权 */
 const AcceptReplacement = () => {
   return (
     <MedicineBgView noTabbar>
@@ -13,7 +13,7 @@ const AcceptReplacement = () => {
         XXX授权您，代为参与活动
       </DescCard>
 
-      <DescCard title={"授权说明"} className="mt-[40px]">
+      <DescCard title="授权说明" className="mt-[40px]">
         <View className="mt-4 text-[28px]">
           <View>
             您被授权操作领药申请材料提交的相关事宜，并可以设置代领人。

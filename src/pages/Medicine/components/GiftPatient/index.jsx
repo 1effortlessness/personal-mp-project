@@ -1,22 +1,22 @@
-import { View, Text } from "@tarojs/components";
-import { Button } from "@antmjs/vantui";
-import MedicineBgView, { DescCard } from "../MedicineBgView";
+import {Text, View} from "@tarojs/components";
+import {Button} from "@antmjs/vantui";
+import MedicineBgView, {DescCard} from "../MedicineBgView";
 
 /**
  *
- * @description 申请领药-有资格
+ * @description 申请领药-授赠患者
  */
-const ApplyMedicine = () => {
+const GiftPatient = () => {
   return (
     <MedicineBgView>
       <DescCard title="领药说明" className="mt-[608px]">
         <View className="mt-4">
-          您是齐鲁制药本次鲁可欣赠药活动名单上的医护人员，可以免费获赠一支鲁可欣给患有骨质疏松症的亲属朋友或自己使用。
+          张XX医生给您赠送一支地舒单抗注射液（鲁可欣®）
         </View>
 
         <View className="mt-4">
           *鲁可欣的兑换权益请
-          <Text className="text-[#00D1FF]">查看权益页</Text>
+          <Text className="text-[#00D1FF]"> 查看权益页</Text>
         </View>
       </DescCard>
 
@@ -26,16 +26,12 @@ const ApplyMedicine = () => {
         </View>
       </DescCard>
 
-      <View className="px-[64px] grid grid-cols-2 w-full gap-6 mt-[48px]">
+      <View className="w-full mt-[48px]">
         <Button type="primary" block>
-          自用领药申请
-        </Button>
-        <Button type="primary" block>
-          转赠他人
+          申请领药
         </Button>
       </View>
-
-      <View className="w-full my-[48px] px-[64px]">
+      <View className="w-full my-[48px]">
         <Button type="primary" block>
           授权他人代操作
         </Button>
@@ -44,4 +40,4 @@ const ApplyMedicine = () => {
   );
 };
 
-export default ApplyMedicine;
+export default GiftPatient;

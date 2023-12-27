@@ -2,7 +2,7 @@ import MedicineBgView, { DescCard } from "../MedicineBgView/index";
 import { View } from "@tarojs/components";
 import { Button } from "@antmjs/vantui";
 
-/** @description 接受药品转增 */
+/** @description 接受转增 */
 const AcceptConversionMedicine = () => {
   return (
     <MedicineBgView>
@@ -11,7 +11,7 @@ const AcceptConversionMedicine = () => {
         <View>地舒单抗注射液（鲁可欣®）</View>
       </DescCard>
 
-      <DescCard title={"领药说明"} className="mt-[40px]">
+      <DescCard title="领药说明" className="mt-[40px]">
         <View className="mt-4 text-[28px] opacity-70">
           <View>1.登录后，获得一张未激活状态的领药权益兑换券。</View>
           <View className="mt-1">

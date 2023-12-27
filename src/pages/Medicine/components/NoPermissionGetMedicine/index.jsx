@@ -1,5 +1,8 @@
 import MedicineBgView, { DescCard } from "../MedicineBgView";
 
+/**
+ * @description 申请领药-没资格
+ */
 const NoPermissionGetMedicine = () => {
   return (
     <MedicineBgView>

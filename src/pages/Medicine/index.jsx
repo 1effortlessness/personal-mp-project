@@ -1,4 +1,3 @@
-import { View } from "@tarojs/components";
 import PageWithTabBar from "@/components/PageWithTabBar";
 import NoPermissionGetMedicine from "./components/NoPermissionGetMedicine";
 import ApplyMedicine from "./components/ApplyMedicine";
@@ -13,7 +12,7 @@ definePageConfig({
 const Medicine = () => {
   return (
     <PageWithTabBar>
-      <NoPermissionGetMedicine />
+      <CancelConversionMedicine />
     </PageWithTabBar>
   );
 };

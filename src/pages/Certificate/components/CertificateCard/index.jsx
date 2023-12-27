@@ -19,7 +19,7 @@ const CertificateCard = ({ used, expired, cardConfig, ...viewProps }) => {
       {...viewProps}
       style={{
         backgroundImage: `url(${兑换券bg})`,
-        filter: isGray ? "grayscale(100%)" : "",
+        filter: isGray ? "grayscale(100%)" : ""
       }}
       className={classNames(
         "w-[662px] h-[384px] rounded-[20px] bg-cover",
