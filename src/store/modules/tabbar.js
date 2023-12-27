@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  activePage: "/pages/index/index",
+  activePage: "/pages/index/index"
 };
 
 const tabbarSlice = createSlice({
@@ -10,12 +10,12 @@ const tabbarSlice = createSlice({
   reducers: {
     updateActivePage: (state, action) => {
       state.activePage = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { updateActivePage } = tabbarSlice.actions;
 export const tabbarSelector = {
-  activePage: (state) => state.tabbar.activePage,
+  activePage: (state) => state.tabbar.activePage
 };
 export default tabbarSlice.reducer;

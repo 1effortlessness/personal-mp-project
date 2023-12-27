@@ -1,5 +1,5 @@
-import { Button, Form, FormItem } from "@antmjs/vantui";
-import { Input, View } from "@tarojs/components";
+import { Form, Input, View } from "@tarojs/components";
+import { Button, FormItem } from "@antmjs/vantui";
 
 function PatientSignUp() {
   return (
@@ -29,7 +29,7 @@ function PatientSignUp() {
         {/* cancel & submit buttons,  */}
         <View className="flex justify-between gap-4 mt-4">
           <View className="flex-grow">
-            <Button block >取消</Button>
+            <Button block>取消</Button>
           </View>
           <View className="flex-grow">
             <Button block type="primary">

@@ -20,7 +20,7 @@ export default function CustomTabBar() {
       onChange={(e) => {
         dispatch(updateActivePage(e.detail));
         Taro.switchTab({
-          url: e.detail,
+          url: e.detail
         });
       }}
       safeAreaInsetBottom
@@ -28,6 +28,7 @@ export default function CustomTabBar() {
       {DefaultConfig.map((config) => {
         return (
           <TabbarItem
+            key={config.key}
             renderIconActive={
               <Image src={config.activeIcon} className="w-[40px] h-[40px]" />
             }
