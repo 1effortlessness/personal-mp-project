@@ -12,7 +12,7 @@ const GetAuthorizedAccount = () => {
         style={{ boxShadow: "0rpx 2rpx 12rpx 0rpx rgba(182,193,206,0.5)" }}
       >
         <View className="rounded-t-[20px] bg-primary px-[68px] py-[24px] ">
-          <Text className="text-[28px] text-white font-extrabold">
+          <Text className="text-base text-white font-extrabold">
             请您查收代操作用户授权您的账号和密码有效期为30天
           </Text>
         </View>
@@ -52,12 +52,12 @@ const TextCell = ({ label, value, labelWidth = 160, ...viewProps }) => {
     >
       <View
         style={{ width: `${labelWidth}rpx` }}
-        className="text-[28px] font-bold"
+        className="text-base font-bold"
       >
         {label}
       </View>
 
-      <View className="flex-grow text-[26px] font-medium">{value}</View>
+      <View className="flex-grow text-sm font-medium">{value}</View>
     </View>
   );
 };

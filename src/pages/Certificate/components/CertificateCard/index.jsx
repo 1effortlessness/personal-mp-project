@@ -28,7 +28,7 @@ const CertificateCard = ({ used, expired, cardConfig, ...viewProps }) => {
     >
       {/* <CustomTabBar /> */}
       {/* title */}
-      <View className="text-[34px] font-extrabold px-[48px] py-[24px] text-white">
+      <View className="text-3xl font-extrabold px-[48px] py-[24px] text-white">
         地舒单抗注射液 (鲁可欣@) 兑换券
       </View>
       {/* body */}
@@ -57,7 +57,7 @@ const CertificateCard = ({ used, expired, cardConfig, ...viewProps }) => {
 
         <CardDivider />
         <View className="flex items-center mt-[16px]">
-          <Text className=" text-red font-bold text-[26px]">
+          <Text className=" text-red font-bold text-sm">
             *请您先去药店预约，再去领药
           </Text>
           <Button size="small" type="primary">
@@ -78,10 +78,8 @@ const InfoCell = ({ label, value, ...viewProps }) => {
         viewProps.className
       )}
     >
-      <View className="w-[160px] text-[26px] font-bold flex-shrink-0">
-        {label}
-      </View>
-      <View className="flex-grow text-[26px] font-medium">{value}</View>
+      <View className="w-[160px] text-sm font-bold flex-shrink-0">{label}</View>
+      <View className="flex-grow text-sm font-medium">{value}</View>
     </View>
   );
 };

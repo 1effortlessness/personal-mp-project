@@ -16,10 +16,11 @@ module.exports = {
         sm: "26px",
         base: "28px",
         xl: "30px",
-        "2xl": "34px",
-        "3xl": "1.953rem",
+        "2xl": "32px",
+        "3xl": "34px",
         "4xl": "2.441rem",
-        "5xl": "3.052rem"
+        "5xl": "3.052rem",
+        large: "40px"
       },
       colors: {
         gray: "#CECECE",

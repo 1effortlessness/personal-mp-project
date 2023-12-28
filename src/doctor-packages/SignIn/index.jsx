@@ -9,7 +9,7 @@ import 视图bg from "@/assets/images/视图bg.png";
 import logo from "@/assets/images/logo.png";
 
 const RoleLoginBoxCls =
-  "w-[256px] h-[256px] flex flex-col justify-center items-center text-white text-[32px]";
+  "w-[256px] h-[256px] flex flex-col justify-center items-center text-white text-2xl";
 const SignIn = () => {
   return (
     <View

@@ -14,7 +14,7 @@ const AcceptReplacement = () => {
       </DescCard>
 
       <DescCard title="授权说明" className="mt-[40px]">
-        <View className="mt-4 text-[28px]">
+        <View className="mt-4 text-base">
           <View>
             您被授权操作领药申请材料提交的相关事宜，并可以设置代领人。
           </View>

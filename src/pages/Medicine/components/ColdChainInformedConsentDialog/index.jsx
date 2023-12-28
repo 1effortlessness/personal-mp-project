@@ -14,7 +14,7 @@ const ColdChainInformedConsentDialog = () => {
     >
       <View className="px-[36px] pt-[58px]">
         {/* title */}
-        <View className="w-full text-center text-[40px] text-primary font-extrabold">
+        <View className="w-full text-center text-large text-primary font-extrabold">
           冷链知情同意书
         </View>
 

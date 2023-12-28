@@ -38,7 +38,7 @@ const GiftPatient = () => {
       </View>
 
       <View className="w-full my-[48px] px-[64px] flex items-center flex-col">
-        <Text className="mb-5 text-white text-[28px]">
+        <Text className="mb-5 text-white text-base">
           你已授权王五账号代操作
         </Text>
         <Button type="primary" plain round block>

@@ -12,7 +12,7 @@ const AcceptConversionMedicine = () => {
       </DescCard>
 
       <DescCard title="领药说明" className="mt-[40px]">
-        <View className="mt-4 text-[28px] opacity-70">
+        <View className="mt-4 text-base opacity-70">
           <View>1.登录后，获得一张未激活状态的领药权益兑换券。</View>
           <View className="mt-1">
             2.因为药品的特殊性，所以兑换领药权益前，需要上传骨质疏松症的病例照片，经后台审核后，激活权益兑换券。

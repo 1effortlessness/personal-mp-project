@@ -13,7 +13,7 @@ const CancelConversionMedicine = () => {
 
   const alert = useCallback((title) => {
     Dialog_.alert({
-      title: title || "",
+      title: title || ""
     }).then((value) => {
       console.log("dialog result", value);
     });
@@ -33,17 +33,17 @@ const CancelConversionMedicine = () => {
           </View>
         </DescCard>
 
-        <DescCard title={"温馨提示"} className="mt-[40px]">
+        <DescCard title="温馨提示" className="mt-[40px]">
           <View className="mt-4">
             因为药品的特殊性，需要上传骨质疏松症的病例照片，经后台审核后，可获取一张药品兑换二维码，在活动指定药店核销兑换药品。{" "}
           </View>
         </DescCard>
 
         <View className="flex flex-col items-center mt-[48px]  mb-[20px]">
-          <Text className="text-white text-[28px] font-medium">
+          <Text className="text-white text-base font-medium">
             你之前进行过转赠操作，是否要取消转赠
           </Text>
-          <Text className="text-white text-[28px] font-medium">
+          <Text className="text-white text-base font-medium">
             （转赠操作只有在被转赠人未提交材料前，可取消）
           </Text>
         </View>

@@ -17,7 +17,7 @@ const MedicineBgView = ({ children, noTabbar, ...viewProps }) => {
       <View
         className="h-[675px] w-full absolute top-[772px]"
         style={{
-          background: "linear-gradient(180deg, #181F78 0%, #000B37 100%)",
+          background: "linear-gradient(180deg, #181F78 0%, #000B37 100%)"
         }}
       ></View>
       <ScrollView
@@ -58,7 +58,7 @@ export const DescCard = ({ children, title, ...viewProps }) => {
         "z-10 font-bold"
       )}
     >
-      <View className="text-[34px]">{title}</View>
+      <View className="text-3xl">{title}</View>
       {children}
     </View>
   );
