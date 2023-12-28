@@ -16,12 +16,15 @@ export default defineAppConfig({
       root: "doctor-packages",
       name: "doctor",
       pages: [
+        "SignIn/index",
+        "ByPasswordSignIn/index",
         "PatientSignUp/index",
         "ApplyMedicineInfo/index",
-        "SignIn/index",
+        "SelectSignInRole/index",
         "CertificateCode/index",
         "ShopSearch/index",
-        "AcceptReplacement/index"
+        "AcceptReplacement/index",
+        "ApplyInfoSubmitSuccess/index"
       ]
     }
   ],

@@ -6,6 +6,8 @@ import AcceptConversionMedicine from "./components/AcceptConversionMedicine";
 import CancelConversionMedicine from "./components/CancelConversionMedicine";
 import GiftPatient from "./components/GiftPatient";
 import ColdChainInformedConsentDialog from "./components/ColdChainInformedConsentDialog";
+import ApplyInfoReviewing from "./components/ApplyInfoReviewing";
+import ApplyMedicineReviewFail from "./components/ApplyMedicineReviewFail";
 
 definePageConfig({
   navigationBarTitleText: "领药"
@@ -14,8 +16,8 @@ definePageConfig({
 const Medicine = () => {
   return (
     <PageWithTabBar>
-      <GiftPatient />
-      <ColdChainInformedConsentDialog />
+      <ApplyMedicineReviewFail />
+      {/* <ColdChainInformedConsentDialog /> */}
     </PageWithTabBar>
   );
 };

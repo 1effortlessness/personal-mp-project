@@ -1,0 +1,19 @@
+.override {
+  :global {
+    --padding-xs: -20px;
+
+    input {
+      height: 60px;
+      border: 2px solid #cecece;
+      padding: 0 20px;
+      border-radius: 10px;
+    }
+
+    .van-field__label {
+      font-size: 28px;
+      font-family: PingFang SC, PingFang SC;
+      font-weight: 800;
+      color: #333333;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { View, Text } from "@tarojs/components";
 import classNames from "classnames";
+import styles from "./index.module.scss";
 
 /**
  *
@@ -14,7 +15,8 @@ const InfoCard = ({ children, title, extra, titleDesc, ...viewProps }) => {
     <View
       className={classNames(
         "bg-white p-[36px] rounded-[20px]",
-        viewProps.className
+        viewProps.className,
+        styles.card
       )}
     >
       {/* head */}
@@ -23,7 +25,7 @@ const InfoCard = ({ children, title, extra, titleDesc, ...viewProps }) => {
         {(titleDesc || title) && (
           <View className="flex items-center">
             <Text className="text-primary text-xl font-extrabold">{title}</Text>
-            <Text className="text-xl text-[rgba(182, 193, 206, 0.50)]">
+            <Text className="text-sm">
               {titleDesc ? `（${titleDesc}）` : ""}
             </Text>
           </View>

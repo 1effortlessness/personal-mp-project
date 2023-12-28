@@ -1,55 +1,41 @@
-import { Button } from "@antmjs/vantui";
-import { View, Image } from "@tarojs/components";
-import defaultAvatar from "@/assets/icons/defaultAvatar.png";
-import 患者bg from "@/assets/images/患者bg.png";
-import 公益bg from "@/assets/images/公益bg.png";
-import 药店bg from "@/assets/images/药店bg.png";
-import 医生bg from "@/assets/images/医生bg.png";
-import 视图bg from "@/assets/images/视图bg.png";
-import logo from "@/assets/images/logo.png";
+import PageWithTabBar from "@/components/PageWithTabBar";
+import { Image, View, Text } from "@tarojs/components";
+import SignLogo from "@/assets/images/SignInLogo.png";
+import { Button, Radio } from "@antmjs/vantui";
 
-const RoleLoginBoxCls =
-  "w-[256px] h-[256px] flex flex-col justify-center items-center text-white text-2xl";
 const SignIn = () => {
   return (
-    <View
-      style={{ backgroundImage: `url(${视图bg})` }}
-      className="flex flex-col items-center h-screen bg-cover"
-    >
-      <Image src={logo} className="w-[332px] h-[120px] self-start" />
-      <View className="mt-[88px]">
-        <Image src={defaultAvatar} className="h-[116px] w-[116px]" />
+    <PageWithTabBar className="flex flex-col items-center">
+      <View className="mt-[98px]">
+        <Image src={SignLogo} className="w-[306px] h-[108px]" />
       </View>
-      <View className="flex justify-center mt-[28px] text-white">未登录</View>
 
-      <View className="grid grid-cols-2 gap-10 mt-20">
-        <View
-          style={{ backgroundImage: `url(${患者bg})` }}
-          className={RoleLoginBoxCls + ""}
-        >
-          患者登录
-        </View>
-        <View
-          style={{ backgroundImage: `url(${医生bg})` }}
-          className={RoleLoginBoxCls}
-        >
-          医生登录
-        </View>
-        <View
-          style={{ backgroundImage: `url(${药店bg})` }}
-          className={RoleLoginBoxCls}
-        >
-          药店工作人员
-          <View>登录</View>
-        </View>
-        <View
-          style={{ backgroundImage: `url(${公益bg})` }}
-          className={RoleLoginBoxCls}
-        >
-          公益专员登录
-        </View>
+      <View className="mt-[98px] flex flex-col items-center w-[364px]">
+        <Button type="primary" round block size="large">
+          手机号一键登录
+        </Button>
+
+        <Text className="text-primary font-extrabold mt-[24px] mb-[48px]">
+          账号密码登录
+        </Text>
+        <Button type="primary" round block size="large" plain hairline>
+          注册
+        </Button>
       </View>
-    </View>
+
+      <View className="px-[48px] mt-[512px]">
+        <Radio
+          style={{ alignItems: "start" }}
+          name="2"
+          iconSize="16px"
+          shape="square"
+        >
+          <View>
+            允许我们在必要的场景下，合理使用您的个人信息，且阅读并同意《患者知情同意书》《用户协议》《隐私协议》等内容
+          </View>
+        </Radio>
+      </View>
+    </PageWithTabBar>
   );
 };
 

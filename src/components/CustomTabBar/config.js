@@ -17,27 +17,27 @@ export const DefaultConfig = [
     key: "home",
     activeIcon: 首页active,
     icon: 首页,
-    path: "pages/index/index",
+    path: "pages/index/index"
   },
   {
     text: "领药",
     key: "medicine",
     activeIcon: 领药active,
     icon: 领药,
-    path: "pages/Medicine/index",
+    path: "pages/Medicine/index"
   },
   {
     text: "兑换券",
     key: "certificate",
     activeIcon: 兑换券active,
     icon: 兑换券,
-    path: "pages/Certificate/index",
+    path: "pages/Certificate/index"
   },
   {
     text: "我的",
     key: "my",
     activeIcon: 我的active,
     icon: 我的,
-    path: "pages/My/index",
-  },
+    path: "pages/My/index"
+  }
 ];

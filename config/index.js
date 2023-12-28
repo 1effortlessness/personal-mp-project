@@ -14,7 +14,7 @@ export default defineConfig(async (merge, { command, mode }) => {
       640: 2.34 / 4,
       750: 0.5,
       375: 1,
-      828: 1.81 / 4,
+      828: 1.81 / 4
     },
     sourceRoot: "src",
     outputRoot: "dist",
@@ -22,38 +22,39 @@ export default defineConfig(async (merge, { command, mode }) => {
     defineConstants: {},
     alias: {
       "@": path.resolve(__dirname, "..", "src"),
+      src: path.resolve(__dirname, "..", "src")
     },
     copy: {
       patterns: [],
-      options: {},
+      options: {}
     },
     framework: "react",
     compiler: "webpack5",
     cache: {
-      enable: true, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+      enable: true // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
     mini: {
       miniCssExtractPluginOption: {
-        ignoreOrder: true,
+        ignoreOrder: true
       },
       postcss: {
         pxtransform: {
           enable: true,
-          config: {},
+          config: {}
         },
         url: {
           enable: true,
           config: {
-            limit: 1024, // 设定转换尺寸上限
-          },
+            limit: 1024 // 设定转换尺寸上限
+          }
         },
         cssModules: {
           enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
           config: {
             namingPattern: "module", // 转换模式，取值为 global/module
-            generateScopedName: "[name]__[local]___[hash:base64:5]",
-          },
-        },
+            generateScopedName: "[name]__[local]___[hash:base64:5]"
+          }
+        }
       },
       webpackChain(chain) {
         chain.merge({
@@ -62,48 +63,48 @@ export default defineConfig(async (merge, { command, mode }) => {
               plugin: UnifiedWebpackPluginV5,
               args: [
                 {
-                  appType: "taro",
-                },
-              ],
-            },
-          },
+                  appType: "taro"
+                }
+              ]
+            }
+          }
         });
-      },
+      }
     },
     h5: {
       publicPath: "/",
       staticDirectory: "static",
       output: {
         filename: "js/[name].[hash:8].js",
-        chunkFilename: "js/[name].[chunkhash:8].js",
+        chunkFilename: "js/[name].[chunkhash:8].js"
       },
       miniCssExtractPluginOption: {
         ignoreOrder: true,
         filename: "css/[name].[hash].css",
-        chunkFilename: "css/[name].[chunkhash].css",
+        chunkFilename: "css/[name].[chunkhash].css"
       },
       postcss: {
         autoprefixer: {
           enable: true,
-          config: {},
+          config: {}
         },
         cssModules: {
           enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
           config: {
             namingPattern: "module", // 转换模式，取值为 global/module
-            generateScopedName: "[name]__[local]___[hash:base64:5]",
-          },
-        },
-      },
+            generateScopedName: "[name]__[local]___[hash:base64:5]"
+          }
+        }
+      }
     },
     rn: {
       appName: "taroDemo",
       postcss: {
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
-        },
-      },
-    },
+          enable: false // 默认为 false，如需使用 css modules 功能，则设为 true
+        }
+      }
+    }
   };
   if (process.env.NODE_ENV === "development") {
     // 本地开发构建配置（不混淆压缩）

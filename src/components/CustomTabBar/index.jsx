@@ -19,9 +19,6 @@ export default function CustomTabBar() {
       active={activePage}
       onChange={(e) => {
         dispatch(updateActivePage(e.detail));
-        Taro.switchTab({
-          url: e.detail
-        });
       }}
       safeAreaInsetBottom
     >

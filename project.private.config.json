@@ -11,14 +11,14 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Medicine/index",
+          "pathName": "doctor-packages/PatientSignUp/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "",
-          "pathName": "doctor-packages/PatientSignUp/index",
+          "name": "领药",
+          "pathName": "pages/Medicine/index",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -1,4 +1,4 @@
-import { View, Image, ScrollView } from "@tarojs/components";
+import { Image, ScrollView, View } from "@tarojs/components";
 import 视图bg from "@/assets/images/视图bg.png";
 import 视图bg2 from "@/assets/images/视图bg2.png";
 import 药 from "@/assets/images/药.png";
