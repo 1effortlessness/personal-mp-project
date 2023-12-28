@@ -4,7 +4,7 @@ import MedicineBgView, { DescCard } from "../MedicineBgView";
 
 /**
  *
- * @description 申请领药-有资格
+ * @description 申请领药-有资格 or 取消授权
  */
 const ApplyMedicine = () => {
   return (
@@ -38,6 +38,15 @@ const ApplyMedicine = () => {
       <View className="w-full my-[48px] px-[64px]">
         <Button type="primary" block>
           授权他人代操作
+        </Button>
+      </View>
+
+      <View className="w-full my-[48px] px-[64px] flex items-center flex-col">
+        <Text className="mb-5 text-white text-[28px]">
+          你已授权王五账号代操作
+        </Text>
+        <Button type="primary" plain round block>
+          取消授权
         </Button>
       </View>
     </MedicineBgView>

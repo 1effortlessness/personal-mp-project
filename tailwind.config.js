@@ -11,6 +11,16 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontSize: {
+        xs: "24px",
+        sm: "26px",
+        base: "28px",
+        xl: "30px",
+        "2xl": "34px",
+        "3xl": "1.953rem",
+        "4xl": "2.441rem",
+        "5xl": "3.052rem"
+      },
       colors: {
         gray: "#CECECE",
         primary: "#00499D",

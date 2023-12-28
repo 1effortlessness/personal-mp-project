@@ -22,10 +22,8 @@ const InfoCard = ({ children, title, extra, titleDesc, ...viewProps }) => {
         {/* title */}
         {(titleDesc || title) && (
           <View className="flex items-center">
-            <Text className="text-primary text-[30px] font-extrabold">
-              {title}
-            </Text>
-            <Text className=" text-[30px] text-[rgba(182, 193, 206, 0.50)]">
+            <Text className="text-primary text-xl font-extrabold">{title}</Text>
+            <Text className="text-xl text-[rgba(182, 193, 206, 0.50)]">
               {titleDesc ? `（${titleDesc}）` : ""}
             </Text>
           </View>
