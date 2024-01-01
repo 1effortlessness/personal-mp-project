@@ -29,7 +29,8 @@ export default defineAppConfig({
       name: 'admin',
       pages: [
         'AdminIndex/index',
-        'AdminMy/index'
+        'AdminMy/index',
+        'ReceivedDrugList/index'
       ]
     }
   ],
