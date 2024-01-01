@@ -3,13 +3,13 @@ export default defineAppConfig({
   pages: [
     "pages/index/index",
     "pages/Medicine/index",
-    "pages/Certificate/index",
+    "pages/Certificate/index"
   ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
     navigationBarTitleText: "WeChat",
-    navigationBarTextStyle: "black",
+    navigationBarTextStyle: "black"
   },
   subpackages: [
     {
@@ -21,25 +21,32 @@ export default defineAppConfig({
         "SignIn/index",
         "CertificateCode/index",
         "ShopSearch/index",
-        "AcceptReplacement/index",
-      ],
+        "AcceptReplacement/index"
+      ]
     },
+    {
+      root: "admin-packages",
+      name: 'admin',
+      pages: [
+        'AdminIndex/index'
+      ]
+    }
   ],
   tabBar: {
     custom: true,
     list: [
       {
         text: "领药",
-        pagePath: "pages/Medicine/index",
+        pagePath: "pages/Medicine/index"
       },
       {
         text: "首页",
-        pagePath: "pages/index/index",
+        pagePath: "pages/index/index"
       },
       {
         text: "兑换券",
-        pagePath: "pages/Certificate/index",
-      },
-    ],
-  },
+        pagePath: "pages/Certificate/index"
+      }
+    ]
+  }
 });
