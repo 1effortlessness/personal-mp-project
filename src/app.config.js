@@ -28,7 +28,8 @@ export default defineAppConfig({
       root: "admin-packages",
       name: 'admin',
       pages: [
-        'AdminIndex/index'
+        'AdminIndex/index',
+        'AdminMy/index'
       ]
     }
   ],
