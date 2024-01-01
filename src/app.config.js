@@ -30,7 +30,9 @@ export default defineAppConfig({
       pages: [
         'AdminIndex/index',
         'AdminMy/index',
-        'ReceivedDrugList/index'
+        'ReceivedDrugList/index',
+        'DrugReceivedDetail/index',
+        'WriteOffForm/index'
       ]
     }
   ],
