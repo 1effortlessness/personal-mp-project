@@ -1,7 +1,7 @@
 import PageWithTabBar from "@/components/PageWithTabBar";
 import { View, Text, Image } from "@tarojs/components";
 import { Search, Tag } from "@antmjs/vantui";
-import { Colors, themeVars } from "@/config/theme";
+import { Colors, themeVars } from "src/config/theme";
 import locationIcon from "@/assets/icons/location.png";
 
 const ShopSearch = () => {

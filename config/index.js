@@ -20,10 +20,6 @@ export default defineConfig(async (merge, { command, mode }) => {
     outputRoot: "dist",
     plugins: [],
     defineConstants: {},
-    alias: {
-      "@": path.resolve(__dirname, "..", "src"),
-      src: path.resolve(__dirname, "..", "src")
-    },
     copy: {
       patterns: [],
       options: {}
@@ -32,6 +28,10 @@ export default defineConfig(async (merge, { command, mode }) => {
     compiler: "webpack5",
     cache: {
       enable: true // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+    },
+    alias: {
+      src: path.resolve(__dirname, "..", "src"),
+      "@": path.resolve(__dirname, "..", "src")
     },
     mini: {
       miniCssExtractPluginOption: {

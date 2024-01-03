@@ -3,7 +3,8 @@ import CustomTabBar from "@/components/CustomTabBar";
 import "./index.scss";
 import classNames from "classnames";
 import { ConfigProvider } from "@antmjs/vantui";
-import { themeVars } from "@/config/theme";
+import { themeVars } from "src/config/theme";
+
 const PageWithTabBar = ({ children, ...viewProps }) => {
   return (
     <ConfigProvider themeVars={themeVars}>

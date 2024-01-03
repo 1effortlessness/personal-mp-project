@@ -10,8 +10,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "",
-          "pathName": "doctor-packages/PatientSignUp/index",
+          "name": "选择角色登录",
+          "pathName": "doctor-packages/SelectSignInRole/index",
           "query": "",
           "launchMode": "default",
           "scene": null

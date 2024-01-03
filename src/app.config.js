@@ -18,7 +18,7 @@ export default defineAppConfig({
       pages: [
         "SignIn/index",
         "ByPasswordSignIn/index",
-        "PatientSignUp/index",
+        "SignUp/index",
         "ApplyMedicineInfo/index",
         "SelectSignInRole/index",
         "CertificateCode/index",
