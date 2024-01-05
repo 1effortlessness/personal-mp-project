@@ -41,3 +41,27 @@ export const DefaultConfig = [
     path: "pages/My/index"
   }
 ];
+
+export const ProxyTabBarConfig = [
+  {
+    text: "首页",
+    key: "home",
+    activeIcon: 首页active,
+    icon: 首页,
+    path: "pages/index/index"
+  },
+  {
+    text: "兑换券",
+    key: "certificate",
+    activeIcon: 兑换券active,
+    icon: 兑换券,
+    path: "pages/Certificate/index"
+  },
+  {
+    text: "我的",
+    key: "my",
+    activeIcon: 我的active,
+    icon: 我的,
+    path: "pages/My/index"
+  }
+];

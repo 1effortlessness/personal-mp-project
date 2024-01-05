@@ -1,25 +1,29 @@
 import Taro from "@tarojs/taro";
 import config from "src/config/index";
+import utils from ".";
 
 const request_data = {
   platform: "wap",
   rent_mode: 2
 };
 
-const request = (
+const request = async (
   options = {
     method: "GET",
     data: {}
-  }
+  },
+  header = {}
 ) => {
+  const token = await utils.storage.getToken();
   return Taro.request({
-    url: config.baseUrl + options.url,
+    url: config.baseUrl + "/api" + options.url,
     data: {
-      ...request_data,
       ...options.data
     },
     header: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+      ...header
     },
     method: options.method.toUpperCase()
   }).then((res) => {
@@ -27,7 +31,7 @@ const request = (
     if (statusCode >= 200 && statusCode < 300) {
       if (data.code != 200) {
         Taro.showToast({
-          title: `${res.data.error.message}~` || res.data.error.code,
+          title: `${res.data.message}` || res.data.code,
           icon: "none",
           mask: true
         });

@@ -47,7 +47,6 @@ const CancelConversionMedicine = () => {
             （转赠操作只有在被转赠人未提交材料前，可取消）
           </Text>
         </View>
-
         <Button
           onClick={cancelConversionHandler}
           className="px-[64px]"

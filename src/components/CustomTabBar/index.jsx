@@ -1,9 +1,11 @@
 import { Tabbar, TabbarItem } from "@antmjs/vantui";
 import Taro from "@tarojs/taro";
-import { DefaultConfig } from "./config";
+import { DefaultConfig, ProxyTabBarConfig } from "./config";
 import { Image } from "@tarojs/components";
 import { useDispatch, useSelector } from "react-redux";
 import { tabbarSelector, updateActivePage } from "@/store/modules/tabbar";
+import { useMemo } from "react";
+import { userSelector } from "src/store/modules/user";
 
 /**
  * @descroption https://github.com/NervJS/taro/issues/7302
@@ -12,8 +14,20 @@ import { tabbarSelector, updateActivePage } from "@/store/modules/tabbar";
  */
 export default function CustomTabBar() {
   const activePage = useSelector(tabbarSelector.activePage);
+  const currentRole = useSelector(userSelector.currentRole);
   const dispatch = useDispatch();
 
+  const tabbarConfig = useMemo(() => {
+    if (currentRole === "doctor") {
+      return DefaultConfig;
+    }
+
+    if (currentRole === "proxy") {
+      return ProxyTabBarConfig;
+    }
+
+    return DefaultConfig;
+  }, [currentRole]);
   return (
     <Tabbar
       active={activePage}
@@ -22,7 +36,7 @@ export default function CustomTabBar() {
       }}
       safeAreaInsetBottom
     >
-      {DefaultConfig.map((config) => {
+      {tabbarConfig.map((config) => {
         return (
           <TabbarItem
             key={config.key}

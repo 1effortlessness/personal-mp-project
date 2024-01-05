@@ -1,13 +1,19 @@
 import { View, Text } from "@tarojs/components";
 import { Button } from "@antmjs/vantui";
 import MedicineBgView, { DescCard } from "../MedicineBgView";
-import { useCallback } from "react";
 
-/** @description 审核失败/成功/驳回 */
-const ApplyMedicineReviewFail = () => {
+/** @description 申请信息审核页 */
+const ApplyMedicineReview = () => {
   return (
     <MedicineBgView>
       <View className="pt-[608px] pb-[48px]">
+        {/* 审核中 */}
+        <DescCard title="" className="mt-[702px] flex justify-center">
+          <Text className="text-3xl w-full text-center">
+            您已经上传材料，请耐心等待审核
+          </Text>
+        </DescCard>
+        {/* 审核中 */}
         <DescCard title="领药说明">
           <View className="mt-4">
             您是齐鲁制药本次鲁可欣赠药活动名单上的医护人员，可以免费获赠一支鲁可欣给患有骨质疏松症的亲属朋友或自己使用。
@@ -35,7 +41,6 @@ const ApplyMedicineReviewFail = () => {
           <Button className="px-[64px]" type="primary" round block plain>
             领药说明
           </Button>
-
           <Button className="px-[64px]" type="primary" round block>
             重新提交材料
           </Button>
@@ -45,4 +50,4 @@ const ApplyMedicineReviewFail = () => {
   );
 };
 
-export default ApplyMedicineReviewFail;
+export default ApplyMedicineReview;

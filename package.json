@@ -40,6 +40,8 @@
     "@antmjs/vantui": "^3.2.2",
     "@babel/runtime": "^7.21.5",
     "@reduxjs/toolkit": "^2.0.1",
+    "@taro-hooks/plugin-auto-import": "^2.0.8",
+    "@taro-hooks/plugin-react": "^2.0.8",
     "@tarojs/components": "3.6.14",
     "@tarojs/helper": "3.6.14",
     "@tarojs/plugin-framework-react": "3.6.14",
@@ -57,7 +59,8 @@
     "classnames": "^2.3.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-redux": "^9.0.4"
+    "react-redux": "^9.0.4",
+    "taro-hooks": "^2.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

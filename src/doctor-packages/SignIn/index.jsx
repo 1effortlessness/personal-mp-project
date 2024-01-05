@@ -1,16 +1,19 @@
-// @ts-ignore
+// @ts-nocheck
 import PageWithTabBar from "@/components/PageWithTabBar";
 import { Image, View, Text } from "@tarojs/components";
-// @ts-ignore
 import SignLogo from "@/assets/images/SignInLogo.png";
 import { Button, Radio } from "@antmjs/vantui";
-import Taro, { useRouter } from "@tarojs/taro";
+import { useRouter } from "@tarojs/taro";
 import { gotoPasswordSignIn, gotoSignUp } from "src/utils/navigator";
+import styles from "./page.module.scss";
+import classNames from "classnames";
+import utils from "src/utils";
+import { useSignIn } from "src/hooks/useSignIn";
 
 const SignIn = () => {
   const router = useRouter();
   const role = router.params.role;
-
+  const { wxLoginHandler } = useSignIn(role);
   return (
     <PageWithTabBar className="flex flex-col items-center">
       <View className="mt-[98px]">
@@ -19,13 +22,9 @@ const SignIn = () => {
 
       <View className="mt-[98px] flex flex-col items-center w-[364px]">
         <Button
-          onClick={() =>
-            Taro.login({
-              success(res) {
-                console.log(res);
-              }
-            })
-          }
+          onClick={wxLoginHandler}
+          // openType="getPhoneNumber"
+          // onGetPhoneNumber={(e) => console.log(e)}
           type="primary"
           round
           block
@@ -44,7 +43,7 @@ const SignIn = () => {
             账号密码登录
           </Text>
         )}
-        {role !== "doctor" && (
+        {role === "proxy" && (
           <View className="w-full mt-[48px]">
             <Button
               onClick={() => gotoSignUp(role)}
@@ -61,14 +60,20 @@ const SignIn = () => {
         )}
       </View>
 
-      <View className="px-[48px] mt-[512px]">
+      <View className={classNames(styles.override, "px-[48px] mt-[512px]")}>
         <Radio
           style={{ alignItems: "start" }}
           name="2"
           iconSize="16px"
           shape="square"
         >
-          <View>
+          <View
+            onClick={() =>
+              utils.storage.getToken().then((res) => {
+                console.log(res);
+              })
+            }
+          >
             允许我们在必要的场景下，合理使用您的个人信息，且阅读并同意《患者知情同意书》《用户协议》《隐私协议》等内容
           </View>
         </Radio>

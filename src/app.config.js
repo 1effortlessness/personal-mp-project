@@ -23,7 +23,7 @@ export default defineAppConfig({
         "SelectSignInRole/index",
         "CertificateCode/index",
         "ShopSearch/index",
-        "AcceptReplacement/index",
+        "AcceptProxy/index",
         "ApplyInfoSubmitSuccess/index"
       ]
     }

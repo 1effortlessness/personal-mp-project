@@ -1,19 +1,42 @@
 import PageWithTabBar from "@/components/PageWithTabBar";
 import { Image, View } from "@tarojs/components";
+// @ts-ignore
 import SignLogo from "@/assets/images/SignInLogo.png";
 import Field from "@/components/Field";
 import { Button, Form, FormItem } from "@antmjs/vantui";
 import "./page.scss";
-import { useRouter } from "@tarojs/taro";
+import Taro, { useRouter } from "@tarojs/taro";
 import { gotoSignUp } from "src/utils/navigator";
+import { useSignIn } from "src/hooks/useSignIn";
 
 const ByPasswordSignIn = () => {
   const router = useRouter();
+  const { workerLoginHandler, doctorLoginByPassword, patientLoginByPassword } =
+    useSignIn();
   const role = router.params.role;
   const isWorker = role === "worker";
-
+  const isDoctor = role === "doctor";
+  const isPatient = role === "patient";
   const onFinish = (_err, values) => {
-    console.log(values, "values");
+    if (isWorker) {
+      workerLoginHandler(values);
+      return;
+    }
+
+    if (isDoctor) {
+      doctorLoginByPassword({ mobile: values.name, password: values.password });
+      return;
+    }
+
+    if (isPatient) {
+      patientLoginByPassword({
+        mobile: values.name,
+        password: values.password
+      });
+      return;
+    }
+
+    Taro.showToast({ title: "请确认登录角色", icon: "none" });
   };
   return (
     <PageWithTabBar className="flex flex-col items-center">
@@ -27,7 +50,7 @@ const ByPasswordSignIn = () => {
             messageClassName="hidden"
             required
             label="用户名"
-            name="account"
+            name="name"
           >
             <Field
               required

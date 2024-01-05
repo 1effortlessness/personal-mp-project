@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { View, Text } from "@tarojs/components";
 import { Button } from "@antmjs/vantui";
 import MedicineBgView, { DescCard } from "../MedicineBgView";
@@ -6,7 +7,7 @@ import MedicineBgView, { DescCard } from "../MedicineBgView";
 const ConversionPatient = () => {
   return (
     <MedicineBgView className="pb-[48px]">
-      <DescCard title={"领药说明"} className="mt-[608px]">
+      <DescCard title="领药说明" className="mt-[608px]">
         <View className="mt-4">
           张XX医生给您赠送一支地舒单抗注射液（鲁可欣®）
         </View>
@@ -17,9 +18,9 @@ const ConversionPatient = () => {
         </View>
       </DescCard>
 
-      <DescCard title={"温馨提示"} className="mt-[40px]">
+      <DescCard title="温馨提示" className="mt-[40px]">
         <View className="mt-4">
-          因为药品的特殊性，需要上传骨质疏松症的病例照片，经后台审核后，可获取一张药品兑换二维码，在活动指定药店核销兑换药品。{" "}
+          因为药品的特殊性，需要上传骨质疏松症的病例照片，经后台审核后，可获取一张药品兑换二维码，在活动指定药店核销兑换药品。
         </View>
       </DescCard>
 

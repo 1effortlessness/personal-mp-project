@@ -6,6 +6,8 @@ import { phone, ID } from "@/utils/regex";
 import { useRouter } from "@tarojs/taro";
 import { goBack } from "src/utils/navigator";
 import apis from "src/apis";
+import { useRequest } from "taro-hooks";
+import { useSignUp } from "src/hooks/useSignUp";
 
 /**
  *
@@ -15,9 +17,8 @@ function SignUp() {
   const formIt = Form.useForm();
   const router = useRouter();
   const role = router.params.role;
+  const { signUpHandler } = useSignUp(role);
 
-  useRequest;
-  const onFinish = (_err, res) => {};
   return (
     <View className="p-4">
       <Form
@@ -25,7 +26,7 @@ function SignUp() {
           console.log(e);
         }}
         form={formIt}
-        onFinish={onFinish}
+        onFinish={(_, res) => signUpHandler(res)}
       >
         {role === "patient" ? (
           <>
@@ -42,8 +43,8 @@ function SignUp() {
                 rules={[
                   {
                     rule: phone,
-                    message: "请输入正确手机号",
-                  },
+                    message: "请输入正确手机号"
+                  }
                 ]}
                 label="手机号"
                 name="mobile"
@@ -56,8 +57,8 @@ function SignUp() {
                 rules={[
                   {
                     rule: ID,
-                    message: "请输入正确身份证号码",
-                  },
+                    message: "请输入正确身份证号码"
+                  }
                 ]}
                 label="身份证号"
                 name="identityCard"
@@ -94,8 +95,8 @@ function SignUp() {
               rules={[
                 {
                   rule: phone,
-                  message: "请输入正确手机号",
-                },
+                  message: "请输入正确手机号"
+                }
               ]}
               label="手机号"
               name="mobile"

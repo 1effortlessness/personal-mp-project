@@ -4,7 +4,7 @@ import Taro from "@tarojs/taro";
 export const getToken = async () => {
   try {
     const res = await Taro.getStorage({
-      key: config.token,
+      key: config.tokenKey
     });
     return res.data || "";
   } catch (e) {
@@ -14,7 +14,7 @@ export const getToken = async () => {
 
 export const setToken = (token) => {
   return Taro.setStorage({
-    key: config.token,
-    data: token,
+    key: config.tokenKey,
+    data: token
   });
 };

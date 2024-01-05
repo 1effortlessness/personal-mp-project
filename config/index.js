@@ -7,6 +7,7 @@ import { UnifiedWebpackPluginV5 } from "weapp-tailwindcss/webpack";
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig = {
+    plugins: ["@taro-hooks/plugin-react", "@taro-hooks/plugin-auto-import"],
     projectName: "qilu-gift-medicine-mp",
     date: "2023-12-17",
     designWidth: 375,
@@ -18,7 +19,6 @@ export default defineConfig(async (merge, { command, mode }) => {
     },
     sourceRoot: "src",
     outputRoot: "dist",
-    plugins: [],
     defineConstants: {},
     copy: {
       patterns: [],

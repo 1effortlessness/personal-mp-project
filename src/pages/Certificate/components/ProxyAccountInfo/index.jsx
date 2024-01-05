@@ -2,8 +2,12 @@ import PageWithTabBar from "@/components/PageWithTabBar";
 import { Button } from "@antmjs/vantui";
 import { View, Text } from "@tarojs/components";
 import classNames from "classnames";
-/** @description 获取账号密码去登录 */
-const GetAuthorizedAccount = () => {
+import { useSelector } from "react-redux";
+import { proxySelector } from "src/store/modules/medicineProxy";
+import utils from "src/utils";
+/** @description 获取代托管账户的信息 */
+const ProxyAccountInfo = () => {
+  const proxyFromRole = useSelector(proxySelector.proxyFromRole);
   return (
     <PageWithTabBar className="p-[40px]">
       {/* 账户密码Card */}
@@ -35,6 +39,7 @@ const GetAuthorizedAccount = () => {
             round
             block
             type="primary"
+            onClick={() => utils.navigator.gotoPasswordSignIn(proxyFromRole)}
           >
             立即登录
           </Button>
@@ -62,4 +67,4 @@ const TextCell = ({ label, value, labelWidth = 160, ...viewProps }) => {
   );
 };
 
-export default GetAuthorizedAccount;
+export default ProxyAccountInfo;

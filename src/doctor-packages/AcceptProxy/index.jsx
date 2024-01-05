@@ -1,12 +1,21 @@
-import PageWithTabBar from "@/components/PageWithTabBar";
 import MedicineBgView, {
   DescCard
 } from "@/pages/Medicine/components/MedicineBgView";
 import { Button } from "@antmjs/vantui";
 import { View } from "@tarojs/components";
+import { useLoad } from "@tarojs/taro";
+import { useFetchAccreditInfo } from "./useFetchAccreditInfo";
+import utils from "src/utils";
+import { useSwitchTab } from "src/components/CustomTabBar/useSwitchTab";
 
-/** @description 药代接受授权 */
-const AcceptReplacement = () => {
+definePageConfig({
+  enableShareAppMessage: true
+});
+/** @description 药代接受代操作 */
+const AcceptProxy = () => {
+  useFetchAccreditInfo();
+
+  const { gotoCertificateTab } = useSwitchTab();
   return (
     <MedicineBgView noTabbar>
       <DescCard title="" className="mt-[608px] flex flex-col items-center">
@@ -29,14 +38,14 @@ const AcceptReplacement = () => {
 
       <View className="mt-[48px] w-full grid grid-cols-2 gap-[48px]">
         <Button type="primary" plain round block>
-          登陆领药
+          取消
         </Button>
-        <Button type="primary" round block>
-          登陆领药
+        <Button onClick={gotoCertificateTab} type="primary" round block>
+          接受邀请
         </Button>
       </View>
     </MedicineBgView>
   );
 };
 
-export default AcceptReplacement;
+export default AcceptProxy;

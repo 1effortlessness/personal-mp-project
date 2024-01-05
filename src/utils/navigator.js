@@ -43,10 +43,24 @@ export const gotoPasswordSignIn = (role) => {
   });
 };
 
+export const gotoSelectSignInRole = () => {
+  route("SelectSignInRole", {
+    redirect: false,
+    packages: "doctor"
+  });
+};
+
 export const gotoSignUp = (role) => {
   route("SignUp", {
     redirect: false,
     params: { role },
+    packages: "doctor"
+  });
+};
+
+export const gotoApplyMedicineInfo = () => {
+  route("ApplyMedicineInfo", {
+    redirect: false,
     packages: "doctor"
   });
 };
