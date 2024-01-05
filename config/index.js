@@ -10,12 +10,12 @@ export default defineConfig(async (merge, { command, mode }) => {
     plugins: ["@taro-hooks/plugin-react", "@taro-hooks/plugin-auto-import"],
     projectName: "qilu-gift-medicine-mp",
     date: "2023-12-17",
-    designWidth: 375,
+    designWidth: 750,
     deviceRatio: {
-      640: 2.34 / 4,
-      750: 0.5,
-      375: 1,
-      828: 1.81 / 4
+      640: 2.34 / 2,
+      750: 1,
+      375: 2,
+      828: 1.81 / 2
     },
     sourceRoot: "src",
     outputRoot: "dist",

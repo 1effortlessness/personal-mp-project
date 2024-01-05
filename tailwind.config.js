@@ -28,7 +28,7 @@ module.exports = {
         red: "#F84D4D"
       },
       textColor: {
-        nomal: "#333333"
+        normal: "#333333"
       },
       backgroundColor: {
         gray: "D9D9D9",

@@ -9,3 +9,4 @@ node_modules/
 .idea
 
 tsconfig.json
+project.private.config.json

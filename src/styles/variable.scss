@@ -3,4 +3,8 @@
 :root,
 page > view:first-child  {
   --primary-color: #00499D;
+  @apply text-normal;
+}
+.theme {
+  --primary-color: #00499D;
 }
