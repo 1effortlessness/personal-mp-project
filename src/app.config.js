@@ -26,6 +26,17 @@ export default defineAppConfig({
         "AcceptProxy/index",
         "ApplyInfoSubmitSuccess/index"
       ]
+    },
+    {
+      root: "admin-packages",
+      name: "admin",
+      pages: [
+        "AdminIndex/index",
+        "AdminMy/index",
+        "ReceivedDrugList/index",
+        "DrugReceivedDetail/index",
+        "WriteOffForm/index"
+      ]
     }
   ],
   tabBar: {
