@@ -12,9 +12,28 @@ export const getToken = async () => {
   }
 };
 
-export const setToken = (token) => {
+export const setToken = (token, role) => {
+  setTokenRole(role);
   return Taro.setStorage({
     key: config.tokenKey,
     data: token
+  });
+};
+
+export const getTokenRole = async () => {
+  try {
+    const res = await Taro.getStorage({
+      key: config.roleKey
+    });
+    return res.data || "";
+  } catch (e) {
+    return "";
+  }
+};
+
+export const setTokenRole = (role) => {
+  return Taro.setStorage({
+    key: config.roleKey,
+    data: role
   });
 };

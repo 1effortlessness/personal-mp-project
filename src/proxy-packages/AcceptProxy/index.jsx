@@ -1,21 +1,28 @@
 import MedicineBgView, {
   DescCard
-} from "@/pages/Medicine/components/MedicineBgView";
+} from "src/common-components/Medicine/MedicineBgView";
 import { Button } from "@antmjs/vantui";
 import { View } from "@tarojs/components";
-import { useLoad } from "@tarojs/taro";
+import Taro, { useRouter } from "@tarojs/taro";
 import { useFetchAccreditInfo } from "./useFetchAccreditInfo";
 import utils from "src/utils";
-import { useSwitchTab } from "src/components/CustomTabBar/useSwitchTab";
 
-definePageConfig({
-  enableShareAppMessage: true
-});
 /** @description 药代接受代操作 */
 const AcceptProxy = () => {
-  useFetchAccreditInfo();
+  const router = useRouter();
+  const fromRole = router.params.fromRole;
+  const token = router.params.token;
+  const { runAsync, loading } = useFetchAccreditInfo();
 
-  const { gotoCertificateTab } = useSwitchTab();
+  const acceptProxyHandler = () => {
+    if (!fromRole || !token) {
+      Taro.showToast({ icon: "none", title: "请检查入口参数" });
+      return;
+    }
+    runAsync(fromRole, token).then(() => {
+      utils.navigator.gotoProxyGetAccount(fromRole);
+    });
+  };
   return (
     <MedicineBgView noTabbar>
       <DescCard title="" className="mt-[608px] flex flex-col items-center">
@@ -40,7 +47,13 @@ const AcceptProxy = () => {
         <Button type="primary" plain round block>
           取消
         </Button>
-        <Button onClick={gotoCertificateTab} type="primary" round block>
+        <Button
+          loading={loading}
+          onClick={acceptProxyHandler}
+          type="primary"
+          round
+          block
+        >
           接受邀请
         </Button>
       </View>

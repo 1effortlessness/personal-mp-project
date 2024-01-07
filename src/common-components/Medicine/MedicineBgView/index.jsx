@@ -1,25 +1,26 @@
-import { Image, ScrollView, View } from "@tarojs/components";
-import 视图bg from "@/assets/images/视图bg.png";
+import { ScrollView, View } from "@tarojs/components";
 import 视图bg2 from "@/assets/images/视图bg2.png";
 import 药 from "@/assets/images/药.png";
 import logo from "@/assets/images/logo.png";
 import styles from "./index.module.scss";
 import classNames from "classnames";
+import { Image } from "@antmjs/vantui";
 
+const bottomBgColor = "linear-gradient(180deg, #181F78 0%, #000B37 100%)";
 const MedicineBgView = ({ children, noTabbar, ...viewProps }) => {
   return (
     <View
       {...viewProps}
-      style={classNames({ backgroundImage: `url(${视图bg})` }, viewProps.style)}
+      style={viewProps.style}
       className={classNames("h-full bg-cover", viewProps.className)}
     >
-      <Image src={视图bg2} className="w-[750px] h-[772px] absolute z-0" />
+      <View className="absolute z-0">
+        <Image src={视图bg2} width={750} height={772} />
+      </View>
       <View
         className="h-[675px] w-full absolute top-[772px]"
-        style={{
-          background: "linear-gradient(180deg, #181F78 0%, #000B37 100%)"
-        }}
-      ></View>
+        style={{ background: bottomBgColor }}
+      />
       <ScrollView
         scrollY
         className={classNames(
@@ -27,14 +28,10 @@ const MedicineBgView = ({ children, noTabbar, ...viewProps }) => {
           noTabbar ? "h-screen" : styles.safeAreaView
         )}
       >
-        <Image
-          src={logo}
-          className="w-[332px] h-[120px] absolute left-0 top-0 z-10"
-        />
-        <Image
-          src={药}
-          className="w-[250px] h-[479px] top-[162px] left-[250px] absolute"
-        />
+        <Logo />
+        <View className="w-full flex justify-center mt-[162px]">
+          <Image src={药} width={250} height={479} />
+        </View>
         <View
           className={classNames(
             "flex flex-col items-center px-[48px]",
@@ -55,13 +52,20 @@ export const DescCard = ({ children, title, ...viewProps }) => {
       className={classNames(
         viewProps.className,
         styles.textContainerCard,
-        "z-10 font-bold"
+        "z-10"
       )}
     >
-      <View className="text-3xl">{title}</View>
+      <View className="text-3xl font-bold">{title}</View>
       {children}
     </View>
   );
 };
 
+const Logo = () => {
+  return (
+    <View className="absolute left-0 top-0 z-10">
+      <Image src={logo} width={332} height={120} />
+    </View>
+  );
+};
 export default MedicineBgView;

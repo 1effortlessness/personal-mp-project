@@ -4,9 +4,10 @@
   "description": "",
   "appid": "wx373d1c0bf1da539e",
   "setting": {
+    "ignoreDevUnusedFiles": false,
     "urlCheck": true,
-    "es6": false,
-    "enhance": false,
+    "es6": true,
+    "enhance": true,
     "compileHotReLoad": false,
     "postcss": false,
     "minified": false,

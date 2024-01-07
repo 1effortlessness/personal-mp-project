@@ -1,17 +1,54 @@
 {
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "projectname": "qilu-gift-medicine-mp",
-  "setting": {
-    "compileHotReLoad": false,
-    "urlCheck": false,
-    "bigPackageSizeSupport": false
-  },
   "condition": {
     "miniprogram": {
       "list": [
         {
-          "name": "兑换券列表",
-          "pathName": "pages/Certificate/index",
+          "name": "领药Tab",
+          "pathName": "pages/Medicine/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "申请材料审核页",
+          "pathName": "doctor-packages/ApplyMedicineMaterialsReview/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "提交药品材料",
+          "pathName": "doctor-packages/ApplyMedicineInfo/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "药代待接受操作页",
+          "pathName": "proxy-packages/AcceptProxy/index",
+          "query": "token=hello&fromRole=doctor",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "patient-packages/AcceptGiftMedicine/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "admin-packages/WriteOffForm/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -21,47 +58,23 @@
           "pathName": "doctor-packages/SelectSignInRole/index",
           "query": "",
           "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "药品Tab",
-          "pathName": "pages/Medicine/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "药代通过分享卡片进入接受代操作页",
-          "pathName": "doctor-packages/AcceptProxy/index",
-          "query": "token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJEb2N0b3I6e1wiaWRcIjoyMixcIm5hbWVcIjpcIuWFg-ael1wiLFwibW9iaWxlXCI6XCIxNzYyODM4MTMwN1wiLFwiaG9zcGl0YWxcIjpcIuS6pOmAmuWMu-mZolwiLFwiZW5hYmxlZFwiOnRydWUsXCJwcm94eVwiOmZhbHNlfSIsImV4cCI6MTcwNTA1NTQxMSwiaWF0IjoxNzA0NDUwNjExfQ.q3RoJ4oHMtsdpwqtWNgAR661pG7jYutToAvzTQACK2zhTV6rrY8Zy0rp3TtfZRrAlji9_dtW-KrLdcI6IwYNzQ&fromRole=patient",
-          "launchMode": "default",
-          "scene": 1036,
-          "referrerInfo": {
-            "appId": "wx373d1c0bf1da539e"
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
           }
         },
         {
-          "name": "申请药品材料",
-          "pathName": "doctor-packages/ApplyMedicineInfo/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "患者注册",
-          "pathName": "doctor-packages/SignUp/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "领药",
-          "pathName": "pages/Medicine/index",
+          "name": "兑换券Tab",
+          "pathName": "pages/Certificate/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         }
       ]
     }
+  },
+  "setting": {
+    "urlCheck": false
   }
 }

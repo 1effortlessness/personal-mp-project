@@ -3,7 +3,8 @@ export default defineAppConfig({
   pages: [
     "pages/index/index",
     "pages/Medicine/index",
-    "pages/Certificate/index"
+    "pages/Certificate/index",
+    "pages/My/index"
   ],
   window: {
     backgroundTextStyle: "light",
@@ -20,23 +21,32 @@ export default defineAppConfig({
         "ByPasswordSignIn/index",
         "SignUp/index",
         "ApplyMedicineInfo/index",
-        "SelectSignInRole/index",
         "CertificateCode/index",
         "ShopSearch/index",
-        "AcceptProxy/index",
-        "ApplyInfoSubmitSuccess/index"
+        "ApplyInfoSubmitSuccess/index",
+        "ApplyMedicineMaterialsReview/index"
       ]
     },
     {
       root: "admin-packages",
       name: "admin",
       pages: [
-        "AdminIndex/index",
-        "AdminMy/index",
-        "ReceivedDrugList/index",
-        "DrugReceivedDetail/index",
+        // "AdminIndex/index",
+        // "AdminMy/index",
+        // "ReceivedDrugList/index",
+        // "DrugReceivedDetail/index",
         "WriteOffForm/index"
       ]
+    },
+    {
+      root: "proxy-packages",
+      name: "proxy",
+      pages: ["ProxyGetAccountInfo/index", "AcceptProxy/index"]
+    },
+    {
+      root: "patient-packages",
+      name: "patient",
+      pages: ["AcceptGiftMedicine/index"]
     }
   ],
   tabBar: {
@@ -53,6 +63,10 @@ export default defineAppConfig({
       {
         text: "兑换券",
         pagePath: "pages/Certificate/index"
+      },
+      {
+        text: "我的",
+        pagePath: "pages/My/index"
       }
     ]
   }

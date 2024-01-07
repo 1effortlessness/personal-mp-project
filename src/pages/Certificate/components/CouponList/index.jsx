@@ -9,7 +9,7 @@ import { userSelector } from "src/store/modules/user";
 
 const CouponList = () => {
   const currentRole = useSelector(userSelector.currentRole);
-  const { data } = useRequest(apis.medicine.getCoupon, {
+  const { data, refresh } = useRequest(apis.medicine.getCoupon, {
     defaultParams: [currentRole ?? "patient"]
   });
 
@@ -18,7 +18,7 @@ const CouponList = () => {
     <PullToRefresh
       className="bg-bg"
       onRefresh={() => {
-        return Promise.resolve(undefined);
+        return refresh();
       }}
     >
       <PageWithTabBar>

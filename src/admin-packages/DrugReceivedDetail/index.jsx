@@ -1,23 +1,23 @@
 import { View } from "@tarojs/components";
-import Container from "../components/Container";
-import CardContainer from "../components/CardContainer/CardContainer";
 import { Button } from "@antmjs/vantui";
+import Container from "src/common-components/WorkerSpace/Container";
+import CardContainer from "src/common-components/WorkerSpace/CardContainer/CardContainer";
 
 function DrugReceivedDetail() {
   const items = [
     {
       label: "发货时间",
-      value: "2023年12月15日  20:23:13",
+      value: "2023年12月15日  20:23:13"
     },
     // content
     {
       label: "发货内容",
-      value: "地舒单抗注射液 (鲁可欣@) ",
+      value: "地舒单抗注射液 (鲁可欣@) "
     },
     {
       label: "数量",
-      value: "200支",
-    },
+      value: "200支"
+    }
   ];
   return (
     <View className="theme">
@@ -41,7 +41,9 @@ function DrugReceivedDetail() {
           <Button plain hairline type="primary" block size="large" round>
             取消
           </Button>
-          <Button type="primary" block size="large" round>确认</Button>
+          <Button type="primary" block size="large" round>
+            确认
+          </Button>
         </View>
       </Container>
     </View>

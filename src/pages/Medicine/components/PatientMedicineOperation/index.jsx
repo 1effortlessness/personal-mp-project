@@ -1,6 +1,8 @@
 import { Text, View } from "@tarojs/components";
 import { Button } from "@antmjs/vantui";
-import MedicineBgView, { DescCard } from "../MedicineBgView";
+import MedicineBgView, {
+  DescCard
+} from "../../../../common-components/Medicine/MedicineBgView";
 import { useSelector } from "react-redux";
 import { userSelector } from "src/store/modules/user";
 import utils from "src/utils";

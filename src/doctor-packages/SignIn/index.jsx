@@ -3,17 +3,28 @@ import PageWithTabBar from "@/components/PageWithTabBar";
 import { Image, View, Text } from "@tarojs/components";
 import SignLogo from "@/assets/images/SignInLogo.png";
 import { Button, Radio } from "@antmjs/vantui";
-import { useRouter } from "@tarojs/taro";
+import Taro, { useRouter } from "@tarojs/taro";
 import { gotoPasswordSignIn, gotoSignUp } from "src/utils/navigator";
 import styles from "./page.module.scss";
 import classNames from "classnames";
 import utils from "src/utils";
 import { useSignIn } from "src/hooks/useSignIn";
+import { useState } from "react";
 
 const SignIn = () => {
   const router = useRouter();
+  const [agreeFlag, setAgreeFlag] = useState(false);
   const role = router.params.role;
-  const { wxLoginHandler } = useSignIn(role);
+  console.log(role);
+  const { wxPhoneCodeLogin } = useSignIn();
+
+  const loginHandler = () => {
+    if (!agreeFlag) {
+      Taro.showToast({ title: "请同意协议", icon: "none" });
+      return;
+    }
+    wxPhoneCodeLogin(role, "17628381307");
+  };
   return (
     <PageWithTabBar className="flex flex-col items-center">
       <View className="mt-[98px]">
@@ -22,7 +33,7 @@ const SignIn = () => {
 
       <View className="mt-[98px] flex flex-col items-center w-[364px]">
         <Button
-          onClick={wxLoginHandler}
+          onClick={loginHandler}
           // openType="getPhoneNumber"
           // onGetPhoneNumber={(e) => console.log(e)}
           type="primary"
@@ -62,8 +73,12 @@ const SignIn = () => {
 
       <View className={classNames(styles.override, "px-[48px] mt-[512px]")}>
         <Radio
+          onChange={({ detail }) => {
+            setAgreeFlag((prev) => (prev ? undefined : detail));
+          }}
+          value={agreeFlag}
           style={{ alignItems: "start" }}
-          name="2"
+          name="agree"
           iconSize="16px"
           shape="square"
         >

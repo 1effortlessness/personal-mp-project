@@ -5,9 +5,11 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { proxySelector } from "src/store/modules/medicineProxy";
 import utils from "src/utils";
+import { useRouter } from "@tarojs/taro";
 /** @description 获取代托管账户的信息 */
-const ProxyAccountInfo = () => {
-  const proxyFromRole = useSelector(proxySelector.proxyFromRole);
+const ProxyGetAccountInfo = () => {
+  const role = useRouter().params.role;
+  console.log(role, "ProxyGetAccountInfo");
   return (
     <PageWithTabBar className="p-[40px]">
       {/* 账户密码Card */}
@@ -39,7 +41,7 @@ const ProxyAccountInfo = () => {
             round
             block
             type="primary"
-            onClick={() => utils.navigator.gotoPasswordSignIn(proxyFromRole)}
+            onClick={() => utils.navigator.gotoPasswordSignIn(role)}
           >
             立即登录
           </Button>
@@ -67,4 +69,4 @@ const TextCell = ({ label, value, labelWidth = 160, ...viewProps }) => {
   );
 };
 
-export default ProxyAccountInfo;
+export default ProxyGetAccountInfo;

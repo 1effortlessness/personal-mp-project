@@ -1,10 +1,28 @@
 import { View } from "@tarojs/components";
 import { Image } from "@antmjs/vantui";
-import AvatarImg from "../assets/admin-logo.svg";
-import ScanImg from "../assets/scan.svg"
+import adminAvatar from "src/assets/icons/admin-logo.svg";
+import doctorAvatar from "src/assets/icons/doctorAvatar.svg";
+import patientAvatar from "src/assets/icons/patientAvatar.svg";
+import proxyAvatar from "src/assets/icons/proxyAvatar.svg";
+import ScanImg from "src/assets/icons/scan.svg";
+import { useSelector } from "react-redux";
+import { userSelector } from "src/store/modules/user";
 
 export function MedicineLogo() {
-  return <Image src={AvatarImg} width={116} height={116} />;
+  const currentRole = useSelector(userSelector.currentRole);
+  const AvatarMap = {
+    patient: patientAvatar,
+    doctor: doctorAvatar,
+    proxy: proxyAvatar,
+    worker: adminAvatar
+  };
+  return (
+    <Image
+      src={AvatarMap[currentRole] || patientAvatar}
+      width={116}
+      height={116}
+    />
+  );
 }
 
 function BannerInfo() {
@@ -37,4 +55,4 @@ function BannerInfo() {
   );
 }
 
-export default BannerInfo
+export default BannerInfo;

@@ -1,4 +1,3 @@
-import Taro from "@tarojs/taro";
 import request from "src/utils/request";
 
 // 患者注册
@@ -41,53 +40,57 @@ export const pharmacyWorkerLogin = async (values) => {
 };
 
 /**
- * @description 患者通过微信获取的phoneCode登录
+ * @description 通过微信获取的phoneCode登录
  * @param {string} phoneCode 微信电话code， 后端解密
  */
-export const patientWxPhoneSignIn = (phoneCode) => {
+export const wxPhoneCodeLogin = (role, phoneCode) => {
+  let url = "/login/patient";
+  if (role === "patient") {
+    url = "/login/patient";
+  }
+
+  if (role === "doctor") {
+    url = "/login/doctor";
+  }
+
+  if (role === "proxy") {
+    url = "/login/medical";
+  }
   return request({
     method: "post",
-    url: "/login/patient",
+    url,
     data: { mobile: phoneCode }
   });
 };
 
 /**
- * @description 医生通过微信获取的phoneCode登录
- * @param {string} phoneCode 微信电话code， 后端解密
- */
-export const doctorWxPhoneSignIn = (phoneCode) => {
-  return request({
-    method: "post",
-    url: "/login/doctor",
-    data: { mobile: "17628381307" }
-  });
-};
-
-/**
- * @description 药代通过微信获取的phoneCode登录
- * @param {string} phoneCode 微信电话code， 后端解密
- */
-export const medicineProxyWxPhoneSignIn = (phoneCode) => {
-  return request({
-    method: "post",
-    url: "/login/medical",
-    data: { mobile: "17628381307" }
-  });
-};
-
-/**
- * @description 工作人员账号密码登录
- * @param {object} values
- * @param {string} values.name 账号
- * @param {string} values.password 密码
+ * @description 通过账号密码登录
+ * @param {string} role
+ * @param {object} accountInfo
+ * @param {string} accountInfo.mobile 账号
+ * @param {string} accountInfo.password 密码
  * @returns
  */
-export const workerLoginByPassword = (values) => {
+export const byPasswordLogin = (role, accountInfo) => {
+  let url = "/login/pharmacy";
+  if (role === "worker") {
+    url = "/login/pharmacy";
+  }
+
+  if (role === "doctor") {
+    url = "/login/doctor/password";
+  }
+
+  if (role === "patient") {
+    url = "/login/patient/password";
+  }
   return request({
     method: "post",
-    url: "/login/pharmacy",
-    data: values
+    url,
+    data:
+      role === "worker"
+        ? { name: accountInfo.mobile, password: accountInfo.password }
+        : accountInfo
   });
 };
 
@@ -122,53 +125,31 @@ export const patientLoginByPassword = (values) => {
 };
 
 /**
- * @description 获取医生的基本信息
+ * @description 获取用户的Me接口信息
  * @method GET
  * @returns
  */
-export const getDoctorBasicInfo = () => {
-  return request({
-    method: "get",
-    url: "/doctor/me",
-    data: {}
-  });
-};
+export const getUserMeInfo = (role) => {
+  let url = "/pharmacy/me";
 
-/**
- * @description 获取药店工作人员的基本信息
- * @method GET
- * @returns
- */
-export const getWorkerBasicInfo = () => {
-  return request({
-    method: "get",
-    url: "/pharmacy/me",
-    data: {}
-  });
-};
+  if (role === "patient") {
+    url = "/patient/me";
+  }
 
-/**
- * @description 获取药代的基本信息
- * @method GET
- * @returns
- */
-export const getProxyBasicInfo = () => {
-  return request({
-    method: "get",
-    url: "/medical/me",
-    data: {}
-  });
-};
+  if (role === "doctor") {
+    url = "/doctor/me";
+  }
 
-/**
- * @description 获取患者的基本信息
- * @method GET
- * @returns
- */
-export const getPatientBasicInfo = () => {
+  if (role === "proxy") {
+    url = "/medical/me";
+  }
+
+  if (role === "worker") {
+    url = "/pharmacy/me";
+  }
   return request({
     method: "get",
-    url: "/patient/me",
+    url,
     data: {}
   });
 };

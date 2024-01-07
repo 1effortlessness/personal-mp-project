@@ -9,13 +9,13 @@ function ReceivedDrugList() {
     {
       sendDate: "2023-12-20",
       number: 100,
-      status: "confirmed",
+      status: "confirmed"
     },
     {
       sendDate: "2023-12-30",
       number: 100,
-      status: "unconfirmed",
-    },
+      status: "unconfirmed"
+    }
   ];
   return (
     <Container>
@@ -31,11 +31,11 @@ function DrugReceiptItem({ sendDate, number, status, onTap }) {
   const items = [
     {
       label: "发货时间",
-      value: dayjs(sendDate).format("YYYY-MM-DD HH:mm:ss"),
+      value: dayjs(sendDate).format("YYYY-MM-DD HH:mm:ss")
     },
     {
       label: "数量",
-      value: number,
+      value: number
     },
     {
       label: "状态",
@@ -43,8 +43,8 @@ function DrugReceiptItem({ sendDate, number, status, onTap }) {
         <Text>确认</Text>
       ) : (
         <Text className="text-[#2D89ED]">未确认</Text>
-      ),
-    },
+      )
+    }
   ];
   return (
     <View className="shadow-md rounded-[20px] bg-white px-4 py-6 flex flex-col gap-5">

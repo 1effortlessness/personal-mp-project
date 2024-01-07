@@ -1,6 +1,10 @@
 // @ts-nocheck
 import Taro from "@tarojs/taro";
 
+export const goBack = () => {
+  Taro.navigateBack();
+};
+
 const route = (name, { redirect, packages, params }) => {
   const prefixPath = packages ? `${packages}-packages` : "pages";
   const suffixPath = "index";
@@ -65,6 +69,18 @@ export const gotoApplyMedicineInfo = () => {
   });
 };
 
-export const goBack = () => {
-  Taro.navigateBack();
+export const gotoProxyGetAccount = (role) => {
+  route("ProxyGetAccountInfo", {
+    redirect: false,
+    packages: "proxy",
+    params: { role }
+  });
+};
+
+export const gotoApplyMedicineMaterialsReview = (role, mode) => {
+  route("ApplyMedicineMaterialsReview", {
+    redirect: false,
+    packages: "doctor",
+    params: { role, mode }
+  });
 };

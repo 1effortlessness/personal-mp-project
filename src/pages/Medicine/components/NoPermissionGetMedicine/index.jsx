@@ -1,4 +1,6 @@
-import MedicineBgView, { DescCard } from "../MedicineBgView";
+import MedicineBgView, {
+  DescCard
+} from "../../../../common-components/Medicine/MedicineBgView";
 
 /**
  * @description 申请领药-没资格
