@@ -1,3 +1,4 @@
+import shareImage from "src/assets/images/shareImage.png";
 import PageWithTabBar from "@/components/PageWithTabBar";
 import NoPermissionGetMedicine from "./components/NoPermissionGetMedicine";
 import DoctorMedicineOperation from "./components/DoctorMedicineOperation";
@@ -7,8 +8,8 @@ import { userSelector } from "src/store/modules/user";
 import { useCallback } from "react";
 import SelectSignInRole from "src/components/SelectSignInRole";
 import Taro from "@tarojs/taro";
-import shareImage from "src/assets/images/shareImage.png";
 import ApplyMedicineReviewResult from "./components/ApplyMedicineReviewResult";
+import utils from "src/utils";
 // eslint-disable-next-line no-undef
 definePageConfig({
   navigationBarTitleText: "领药",
@@ -17,19 +18,19 @@ definePageConfig({
 
 const Medicine = () => {
   // 分享参数设置
-  Taro.useShareAppMessage((res) => {
+  Taro.useShareAppMessage(async (res) => {
+    const token = await utils.storage.getToken();
+    const tokenRole = await utils.storage.getTokenRole();
     let title = "活动转赠";
-    let path = "proxy-packages/AcceptProxy/index?token=test&fromRole=doctor";
-
+    let path = `patient-packages/AcceptGiftMedicine/index?token=${token}&fromRole=${tokenRole}`;
     if (res?.target?.id === "代操作") {
       title = "活动授权代操作";
-      path = "proxy-packages/AcceptProxy/index?token=test&fromRole=doctor";
+      path = `proxy-packages/AcceptProxy/index?token=${token}&fromRole=${tokenRole}`;
     }
 
     if (res?.target?.id === "转赠") {
       title = "活动转赠";
-      path =
-        "patient-packages/AcceptGiftMedicine/index?token=test&fromRole=doctor";
+      path = `patient-packages/AcceptGiftMedicine/index?token=${token}&fromRole=${tokenRole}`;
     }
     return {
       title,
@@ -37,18 +38,25 @@ const Medicine = () => {
       imageUrl: shareImage
     };
   });
+
   const currentRole = useSelector(userSelector.currentRole);
+  const currentRoleBasicInfo = useSelector(userSelector.currentRoleBasicInfo);
+  const materialsReviewInfo = useSelector(userSelector.materialsReviewInfo);
   const isLogin = useSelector(userSelector.isLogin);
   const DisplayComp = useCallback(() => {
-    return <ApplyMedicineReviewResult />;
-    if (!isLogin) {
-      return <SelectSignInRole />;
-    }
+    if (!isLogin) return <SelectSignInRole />;
+    if (!currentRoleBasicInfo?.enabled) return <NoPermissionGetMedicine />;
+    if (materialsReviewInfo) return <ApplyMedicineReviewResult />;
     if (currentRole === "doctor") return <DoctorMedicineOperation />;
     if (currentRole === "patient") return <PatientMedicineOperation />;
 
     return <NoPermissionGetMedicine />;
-  }, [currentRole, isLogin]);
+  }, [
+    currentRole,
+    currentRoleBasicInfo?.enabled,
+    isLogin,
+    materialsReviewInfo
+  ]);
   return (
     <PageWithTabBar>
       <DisplayComp />

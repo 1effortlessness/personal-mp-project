@@ -31,7 +31,7 @@ const ByPasswordSignIn = () => {
             messageClassName="hidden"
             required
             label="用户名"
-            name="name"
+            name="mobile"
           >
             <Field
               required

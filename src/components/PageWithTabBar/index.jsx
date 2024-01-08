@@ -7,10 +7,10 @@ import { themeVars } from "src/config/theme";
 
 const PageWithTabBar = ({ children, ...viewProps }) => {
   return (
-    <ConfigProvider themeVars={themeVars}>
+    <ConfigProvider className="h-full" themeVars={themeVars}>
       <View
         {...viewProps}
-        className={classNames("safe-area-view", viewProps.className)}
+        className={classNames("safe-area-view h-full", viewProps.className)}
       >
         {children}
       </View>

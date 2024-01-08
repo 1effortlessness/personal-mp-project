@@ -37,3 +37,7 @@ export const setTokenRole = (role) => {
     data: role
   });
 };
+
+export const clearAuth = () => {
+  return Taro.clearStorage();
+};

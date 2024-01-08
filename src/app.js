@@ -15,14 +15,12 @@ function App({ children }) {
 }
 
 function Bootstrap({ children }) {
-  const { getUserMeInfo } = useSignIn();
+  const { getUserMeInfo } = useSignIn(true);
   const init = async () => {
     const token = await getToken();
-    console.log(token, "token");
     if (token) {
       const tokenRole = await getTokenRole();
-      console.log(tokenRole, "tokenRole");
-      getUserMeInfo(tokenRole, "close");
+      getUserMeInfo(tokenRole);
     }
   };
   Taro.useLaunch(() => {

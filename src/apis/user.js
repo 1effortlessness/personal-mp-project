@@ -1,12 +1,17 @@
 import request from "src/utils/request";
 
 // 患者注册
-export const patientSignUp = (values) => {
-  return request({
-    method: "post",
-    url: "/doctor/patient",
-    data: values
-  });
+export const patientSignUp = (values, token) => {
+  return request(
+    {
+      method: "post",
+      url: "/doctor/patient",
+      data: values
+    },
+    {
+      Authorization: "Bearer " + token
+    }
+  );
 };
 
 /**

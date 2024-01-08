@@ -1,14 +1,16 @@
+import PageWithTabBar from "src/components/PageWithTabBar";
+import { useRequest } from "taro-hooks";
 import { View } from "@tarojs/components";
-
 import "./page.scss";
 import Banner from "src/common-components/WorkerSpace/Banner";
 import Container from "src/common-components/WorkerSpace/Container";
 import BannerInfo from "src/common-components/WorkerSpace/BannerInfo";
 import CardContainer from "src/common-components/WorkerSpace/CardContainer/CardContainer";
+import apis from "src/apis";
 
-function Index() {
+function WorkSpace() {
   return (
-    <View>
+    <PageWithTabBar>
       <Banner></Banner>
       <Container>
         <BannerInfo />
@@ -19,22 +21,23 @@ function Index() {
           核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案核销须知文案
         </CardContainer>
       </Container>
-    </View>
+    </PageWithTabBar>
   );
 }
 
 function DataPanel() {
+  const { data: shopStatistics } = useRequest(apis.shop.getShopStatistics);
   const data = [
     {
-      value: 50,
+      value: shopStatistics?.result?.inventory,
       label: "库存数量"
     },
     {
-      value: 9,
+      value: shopStatistics?.result?.writeOff,
       label: "已核销数量"
     },
     {
-      value: 1,
+      value: shopStatistics?.result?.dispensing,
       label: "等接收药品"
     }
   ];
@@ -53,4 +56,4 @@ function DataPanel() {
     </View>
   );
 }
-export default Index;
+export default WorkSpace;

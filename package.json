@@ -61,7 +61,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^9.0.4",
-    "taro-hooks": "^2.0.8"
+    "taro-hooks": "^2.0.8",
+    "wx-base64-qrcode": "^1.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

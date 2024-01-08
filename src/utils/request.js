@@ -35,6 +35,7 @@ const request = async (
           icon: "none",
           mask: true
         });
+        return Promise.reject(`${res.data.message}` || res.data.code);
       }
       return data;
     } else {

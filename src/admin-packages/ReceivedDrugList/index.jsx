@@ -1,10 +1,19 @@
 import { Text, View } from "@tarojs/components";
-import Container from "../components/Container";
 import dayjs from "dayjs";
 import { Button } from "@antmjs/vantui";
 import Taro from "@tarojs/taro";
+import Container from "src/common-components/WorkerSpace/Container";
+import PageWithTabBar from "src/components/PageWithTabBar";
+import apis from "src/apis";
+import { useRequest } from "taro-hooks";
+import utils from "src/utils";
+
+definePageConfig({
+  navigationBarTitleText: "援助药收货列表"
+});
 
 function ReceivedDrugList() {
+  const { data } = useRequest(apis.shop.getDispensingList);
   const items = [
     {
       sendDate: "2023-12-20",
@@ -18,11 +27,21 @@ function ReceivedDrugList() {
     }
   ];
   return (
-    <Container>
-      {items.map((item, index) => {
-        return <DrugReceiptItem {...item} key={index} />;
-      })}
-    </Container>
+    <PageWithTabBar>
+      <View className="flex flex-col gap-[40px] p-[48px]">
+        {items.map((item, index) => {
+          return (
+            <DrugReceiptItem
+              onTap={() => {
+                utils.navigator.gotoDrugReceivedDetail();
+              }}
+              {...item}
+              key={index}
+            />
+          );
+        })}
+      </View>
+    </PageWithTabBar>
   );
 }
 

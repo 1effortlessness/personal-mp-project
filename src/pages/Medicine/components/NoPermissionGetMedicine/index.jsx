@@ -1,6 +1,6 @@
 import MedicineBgView, {
   DescCard
-} from "../../../../common-components/Medicine/MedicineBgView";
+} from "src/common-components/Medicine/MedicineBgView";
 
 /**
  * @description 申请领药-没资格
@@ -8,10 +8,7 @@ import MedicineBgView, {
 const NoPermissionGetMedicine = () => {
   return (
     <MedicineBgView>
-      <DescCard
-        title=""
-        className="flex justify-center items-center mt-[702px]"
-      >
+      <DescCard title="" className="flex justify-center items-center">
         您暂时未获得参与活动的资格
       </DescCard>
     </MedicineBgView>

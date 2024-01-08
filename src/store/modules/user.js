@@ -7,8 +7,11 @@ const initialState = {
     worker: {},
     proxy: {}
   },
+
   isLogin: false,
-  currentRole: "doctor"
+  currentRole: "doctor",
+  reviewStatus: undefined,
+  materialsReviewInfo: undefined
 };
 
 const userSlice = createSlice({
@@ -34,6 +37,13 @@ const userSlice = createSlice({
       state.basicInfo.proxy = payload;
       state.currentRole = "proxy";
       state.isLogin = true;
+    },
+
+    setMaterialsReviewInfo: (state, { payload }) => {
+      state.materialsReviewInfo = payload;
+    },
+    logout: () => {
+      return initialState;
     }
   }
 });
@@ -42,7 +52,8 @@ export const {
   setDoctorBasicInfo,
   setPatientBasicInfo,
   setWorkerBasicInfo,
-  setProxyBasicInfo
+  setProxyBasicInfo,
+  logout
 } = userSlice.actions;
 export const userSelector = {
   doctor: (state) => state.user.basicInfo.doctor,
@@ -50,6 +61,7 @@ export const userSelector = {
   isLogin: (state) => state.user.isLogin,
   currentRoleBasicInfo: (state) => {
     return state.user.basicInfo[state.user.currentRole];
-  }
+  },
+  materialsReviewInfo: (state) => state.user.materialsReviewInfo
 };
 export default userSlice.reducer;

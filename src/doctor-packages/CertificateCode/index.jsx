@@ -1,9 +1,18 @@
 import PageWithTabBar from "@/components/PageWithTabBar";
 import { Button } from "@antmjs/vantui";
-import { View, Text } from "@tarojs/components";
+import { View, Text, Image } from "@tarojs/components";
 import classNames from "classnames";
+import { useMemo } from "react";
+// https://github.com/PsChina/wx-base64-qrcode 文档地址
+import QR from "wx-base64-qrcode";
+import { useSelector } from "react-redux";
+import { couponSelector } from "src/store/modules/coupon";
 
 const CertificateCode = () => {
+  const couponData = useSelector(couponSelector.couponData);
+  const base64Data = useMemo(() => {
+    return QR.createQrCodeImg(couponData?.id ?? "any str code", 312);
+  }, [couponData?.id]); // base64的数据
   return (
     <PageWithTabBar className="p-[40px]">
       <View className="bg-white p-[40px] shadow-lg rounded-[20px]">
@@ -16,8 +25,7 @@ const CertificateCode = () => {
         </View>
         <View className="flex items-center flex-col mt-[10px]">
           {/* 二维码 */}
-          <View className="w-[312px] h-[312px] bg-red"></View>
-
+          <Image src={base64Data} className="w-[312px] h-[312px]" />
           {/* tip */}
           <Text className="text-red mt-[10px] text-sm">
             *请您先联系药店预约，再去领药

@@ -26,17 +26,18 @@ export function MedicineLogo() {
 }
 
 function BannerInfo() {
+  const currentRoleBasicInfo = useSelector(userSelector.currentRoleBasicInfo);
   return (
     <View className="flex items-center gap-4 relative text-white">
       <MedicineLogo />
       <View className="flex justify-between gap-2 flex-grow">
         <View className="flex-grow">
           <View className="text-white font-medium mb-3">
-            南京九天药房（文晖路店）
+            {currentRoleBasicInfo?.shopName}
           </View>
           <View className="flex">
             <View className="bg-[#7598C2] text-white text-[22px] rounded-full min-w-[140px] py-0.5 px-3 text-center">
-              李天
+              {currentRoleBasicInfo.name}
             </View>
           </View>
         </View>

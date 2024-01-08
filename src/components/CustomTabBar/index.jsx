@@ -1,6 +1,6 @@
 import { Tabbar, TabbarItem } from "@antmjs/vantui";
 import Taro from "@tarojs/taro";
-import { DefaultConfig, ProxyTabBarConfig } from "./config";
+import { DefaultConfig, ProxyTabBarConfig, WorkerTabBarConfig } from "./config";
 import { Image } from "@tarojs/components";
 import { useDispatch, useSelector } from "react-redux";
 import { tabbarSelector, updateActivePage } from "@/store/modules/tabbar";
@@ -24,6 +24,10 @@ export default function CustomTabBar() {
 
     if (currentRole === "proxy") {
       return ProxyTabBarConfig;
+    }
+
+    if (currentRole === "worker") {
+      return WorkerTabBarConfig;
     }
 
     return DefaultConfig;

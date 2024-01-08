@@ -5,8 +5,6 @@ import InfoCard from "@/components/InfoCard";
 import { phone, ID } from "@/utils/regex";
 import { useRouter } from "@tarojs/taro";
 import { goBack } from "src/utils/navigator";
-import apis from "src/apis";
-import { useRequest } from "taro-hooks";
 import { useSignUp } from "src/hooks/useSignUp";
 
 /**
@@ -14,19 +12,28 @@ import { useSignUp } from "src/hooks/useSignUp";
  * @description 患者注册页
  */
 function SignUp() {
-  const formIt = Form.useForm();
   const router = useRouter();
   const role = router.params.role;
-  const { signUpHandler } = useSignUp(role);
+  const token = router.params.token;
 
+  const { patientSignUp, medicineProxySignUp } = useSignUp(role);
+
+  const onFinish = (values) => {
+    if (role === "patient") {
+      patientSignUp(values, token);
+    }
+
+    if (role === "proxy") {
+      medicineProxySignUp(values);
+    }
+  };
   return (
     <View className="p-4">
       <Form
         onChange={(e) => {
           console.log(e);
         }}
-        form={formIt}
-        onFinish={(_, res) => signUpHandler(res)}
+        onFinish={(_, res) => onFinish(res)}
       >
         {role === "patient" ? (
           <>

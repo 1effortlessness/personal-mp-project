@@ -42,6 +42,15 @@ export const cancelProxy = (role) => {
   });
 };
 
+// 取消转赠
+export const cancelGift = () => {
+  return request({
+    method: "post",
+    url: "/doctor/cancelPatient",
+    data: {}
+  });
+};
+
 // 申请药品材料提交
 export const submitMedicineMaterials = (role, materials) => {
   let url = "/patient/apply";

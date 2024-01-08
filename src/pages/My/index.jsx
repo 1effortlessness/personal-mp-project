@@ -11,15 +11,23 @@ import Container from "src/common-components/WorkerSpace/Container";
 import { MedicineLogo } from "src/common-components/WorkerSpace/BannerInfo";
 import CardContainer from "src/common-components/WorkerSpace/CardContainer/CardContainer";
 import SelectSignInRole from "src/components/SelectSignInRole";
+import utils from "src/utils";
 
+/*global definePageConfig*/
+definePageConfig({
+  navigationBarTitleText: "我的"
+});
 function My() {
   const currentRole = useSelector(userSelector.currentRole);
+  const isLogin = useSelector(userSelector.isLogin);
+  if (!isLogin) {
+    return (
+      <PageWithTabBar>
+        <SelectSignInRole />
+      </PageWithTabBar>
+    );
+  }
 
-  return (
-    <PageWithTabBar>
-      <SelectSignInRole />
-    </PageWithTabBar>
-  );
   return (
     <PageWithTabBar>
       <Banner />
@@ -31,13 +39,19 @@ function My() {
           <BasicInfo />
         </CardContainer>
         {currentRole === "worker" && (
-          <View className="shadow-md bg-white rounded-[20px] p-4 flex justify-between items-center text-primary font-semibold">
+          <View
+            onClick={utils.navigator.gotoReceivedDrugList}
+            className="shadow-md bg-white rounded-[20px] p-4 flex justify-between items-center text-primary font-semibold"
+          >
             <Text>援助药收货</Text>
             <Icon name="arrow" size="16px" />
           </View>
         )}
-        {currentRole === "worker" && (
-          <View className="shadow-md bg-white rounded-[20px] p-4 flex justify-between items-center text-primary font-semibold">
+        {currentRole === "proxy" && (
+          <View
+            onClick={utils.navigator.gotoFollowDoctorList}
+            className="shadow-md bg-white rounded-[20px] p-4 flex justify-between items-center text-primary font-semibold"
+          >
             <Text>我关注的医生</Text>
             <Icon name="arrow" size="16px" />
           </View>

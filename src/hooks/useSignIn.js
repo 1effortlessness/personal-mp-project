@@ -10,31 +10,42 @@ import {
   setWorkerBasicInfo
 } from "src/store/modules/user";
 
-export const useSignIn = () => {
+export const useSignIn = (isInit = false) => {
   const dispatch = useDispatch();
-  const { gotoMedicineTab } = useSwitchTab();
+  const { gotoMedicineTab, gotoWorkSpaceTab, gotoMyTab } = useSwitchTab();
+
+  // 医生/患者 获取申请记录
+  const { run: getApplyMedicineMaterialsReview } = useRequest(
+    apis.medicine.getApplyMedicineMaterialsReview,
+    {
+      manual: true
+    }
+  );
 
   // 获取用户基本信息
   const { run: getUserMeInfo } = useRequest(apis.user.getUserMeInfo, {
     manual: true,
-    onSuccess(res, [_role, autoJump]) {
+    async onSuccess(res, [_role]) {
       if (_role === "doctor") {
         dispatch(setDoctorBasicInfo(res.result));
+        getApplyMedicineMaterialsReview(_role);
+        !isInit && gotoMedicineTab();
       }
 
       if (_role === "patient") {
         dispatch(setPatientBasicInfo(res.result));
+        getApplyMedicineMaterialsReview(_role);
+        !isInit && gotoMedicineTab();
       }
 
       if (_role === "proxy") {
         dispatch(setProxyBasicInfo(res.result));
+        !isInit && gotoMyTab();
       }
 
       if (_role === "worker") {
         dispatch(setWorkerBasicInfo(res.result));
-      }
-      if (autoJump !== "close") {
-        gotoMedicineTab();
+        !isInit && gotoWorkSpaceTab();
       }
     }
   });

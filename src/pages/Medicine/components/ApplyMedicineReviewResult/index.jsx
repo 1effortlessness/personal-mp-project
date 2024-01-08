@@ -6,21 +6,41 @@ import MedicineBgView, {
 import { userSelector } from "src/store/modules/user";
 import { useSelector } from "react-redux";
 import utils from "src/utils";
+import { useMemo } from "react";
 
 /** @description 申请材料审核结果页 */
 const ApplyMedicineReviewResult = () => {
   const currentRole = useSelector(userSelector.currentRole);
-  const reviewResult = "pass";
+  const materialsReviewInfo = useSelector(userSelector.materialsReviewInfo);
+
+  /**
+   * @description
+   * 申请状态：
+      isPassFinal=true ：申请通过
+      isPassFinal=false 且 reasonFinal!=null：申请被驳回
+      isPassFinal=false 且 reasonFinal=null：申请未通过
+      isPassFinal为null是 等待审核
+   */
+  const noPass =
+    materialsReviewInfo?.isPassFinal === false &&
+    materialsReviewInfo?.reasonFinal;
+  const pass = materialsReviewInfo?.isPassFinal === true;
+  const reject =
+    materialsReviewInfo?.isPassFinal === false &&
+    materialsReviewInfo?.reasonFinal !== null;
+
+  const pendingReview = materialsReviewInfo?.isPassFinal === null;
+
+  const reviewOpinion = useMemo(() => {
+    if (noPass) return "noPass";
+    if (pass) return "pass";
+    if (reject) return "reject";
+  }, [noPass, pass, reject]);
+
+  if (pendingReview) return <PendingReview />;
   return (
     <MedicineBgView>
       <View className="pb-[48px]">
-        {/* 审核中 */}
-        {/* <DescCard title="" className="mt-[538px] flex justify-center">
-          <Text className="text-3xl w-full text-center">
-            您已经上传材料，请耐心等待审核
-          </Text>
-        </DescCard> */}
-        {/* 审核中 */}
         <DescCard title="领药说明" classNames="">
           <View className="mt-4">
             张XX医生给您赠送一支地舒单抗注射液（鲁可欣®）
@@ -38,11 +58,11 @@ const ApplyMedicineReviewResult = () => {
         </DescCard>
 
         <View className="flex flex-col items-center my-[48px]">
-          <ReviewText reviewOpinion={reviewResult} />
+          <ReviewText reviewOpinion={reviewOpinion} />
         </View>
 
         <View className="grid grid-cols-2 gap-8">
-          {reviewResult === "fail" && (
+          {noPass && (
             <>
               <Button
                 onClick={() =>
@@ -64,7 +84,7 @@ const ApplyMedicineReviewResult = () => {
             </>
           )}
 
-          {reviewResult === "pass" && (
+          {pass && (
             <>
               <Button
                 onClick={() =>
@@ -86,7 +106,7 @@ const ApplyMedicineReviewResult = () => {
             </>
           )}
 
-          {reviewResult === "reject" && (
+          {reject && (
             <>
               <Button
                 onClick={() =>
@@ -114,8 +134,21 @@ const ApplyMedicineReviewResult = () => {
   );
 };
 
+// 等待审核
+const PendingReview = () => {
+  return (
+    <MedicineBgView>
+      <DescCard title="" className="mt-[538px] flex justify-center">
+        <Text className="text-3xl w-full text-center">
+          您已经上传材料，请耐心等待审核
+        </Text>
+      </DescCard>
+    </MedicineBgView>
+  );
+};
+
 const ReviewText = ({ reviewOpinion }) => {
-  if (reviewOpinion === "fail")
+  if (reviewOpinion === "noPass")
     return (
       <Text className="text-white text-base font-medium">
         抱歉您的申请材料：<Text className="text-red">未通过审核</Text>

@@ -4,13 +4,18 @@ import PageWithTabBar from "@/components/PageWithTabBar";
 import CertificateCard from "../CertificateCard";
 import { useRequest } from "taro-hooks";
 import apis from "src/apis";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "src/store/modules/user";
+import { setCouponData } from "src/store/modules/coupon";
 
 const CouponList = () => {
   const currentRole = useSelector(userSelector.currentRole);
+  const dispatch = useDispatch();
   const { data, refresh } = useRequest(apis.medicine.getCoupon, {
-    defaultParams: [currentRole ?? "patient"]
+    defaultParams: [currentRole ?? "patient"],
+    onSuccess(res) {
+      dispatch(setCouponData(res?.result));
+    }
   });
 
   console.log(data, "data");

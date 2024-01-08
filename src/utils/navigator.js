@@ -54,10 +54,10 @@ export const gotoSelectSignInRole = () => {
   });
 };
 
-export const gotoSignUp = (role) => {
+export const gotoSignUp = (role, token) => {
   route("SignUp", {
     redirect: false,
-    params: { role },
+    params: { role, token },
     packages: "doctor"
   });
 };
@@ -82,5 +82,33 @@ export const gotoApplyMedicineMaterialsReview = (role, mode) => {
     redirect: false,
     packages: "doctor",
     params: { role, mode }
+  });
+};
+
+export const gotoReceivedDrugList = () => {
+  route("ReceivedDrugList", {
+    redirect: false,
+    packages: "admin"
+  });
+};
+
+export const gotoDrugReceivedDetail = () => {
+  return route("DrugReceivedDetail", {
+    redirect: false,
+    packages: "admin"
+  });
+};
+
+export const gotoFollowDoctorList = () => {
+  return route("FollowDoctorList", {
+    redirect: false,
+    packages: "proxy"
+  });
+};
+
+export const gotoFollowDoctor = () => {
+  return route("FollowDoctor", {
+    redirect: false,
+    packages: "proxy"
   });
 };

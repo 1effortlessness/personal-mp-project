@@ -2,8 +2,21 @@ import { View } from "@tarojs/components";
 import { Button } from "@antmjs/vantui";
 import Container from "src/common-components/WorkerSpace/Container";
 import CardContainer from "src/common-components/WorkerSpace/CardContainer/CardContainer";
+import { useRequest } from "taro-hooks";
+import apis from "src/apis";
+import utils from "src/utils";
 
+definePageConfig({
+  navigationBarTitleText: "援助药收货详情"
+});
 function DrugReceivedDetail() {
+  const { run } = useRequest(apis.shop.dispensingConfirm, {
+    manual: true,
+    onSuccess() {
+      utils.navigator.goBack();
+    }
+  });
+
   const items = [
     {
       label: "发货时间",
@@ -41,7 +54,13 @@ function DrugReceivedDetail() {
           <Button plain hairline type="primary" block size="large" round>
             取消
           </Button>
-          <Button type="primary" block size="large" round>
+          <Button
+            onClick={() => run("id")}
+            type="primary"
+            block
+            size="large"
+            round
+          >
             确认
           </Button>
         </View>

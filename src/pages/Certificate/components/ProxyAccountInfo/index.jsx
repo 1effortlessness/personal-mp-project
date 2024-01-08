@@ -5,12 +5,9 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { proxySelector } from "src/store/modules/medicineProxy";
 import utils from "src/utils";
-import { useRouter } from "@tarojs/taro";
 /** @description 获取代托管账户的信息 */
-const ProxyGetAccountInfo = () => {
-  const proxyAccountInfo = useSelector(proxySelector.proxyAccountInfo);
-  const role = useRouter().params.role;
-  console.log(role, "ProxyGetAccountInfo");
+const ProxyAccountInfo = () => {
+  const proxyFromRole = useSelector(proxySelector.proxyFromRole);
   return (
     <PageWithTabBar className="p-[40px]">
       {/* 账户密码Card */}
@@ -24,12 +21,8 @@ const ProxyGetAccountInfo = () => {
           </Text>
         </View>
         <View className="mt-[40px] px-[68px]">
-          <TextCell label="账号:" value={proxyAccountInfo?.mobile} />
-          <TextCell
-            className="mt-3"
-            label="密码:"
-            value={proxyAccountInfo.password}
-          />
+          <TextCell label="账号:" value="18489152456" />
+          <TextCell className="mt-3" label="密码:" value="18489152456" />
         </View>
       </View>
 
@@ -46,7 +39,7 @@ const ProxyGetAccountInfo = () => {
             round
             block
             type="primary"
-            onClick={() => utils.navigator.gotoPasswordSignIn(role)}
+            onClick={() => utils.navigator.gotoPasswordSignIn(proxyFromRole)}
           >
             立即登录
           </Button>
@@ -74,4 +67,4 @@ const TextCell = ({ label, value, labelWidth = 160, ...viewProps }) => {
   );
 };
 
-export default ProxyGetAccountInfo;
+export default ProxyAccountInfo;

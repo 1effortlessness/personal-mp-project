@@ -23,55 +23,59 @@ const SignIn = () => {
       Taro.showToast({ title: "请同意协议", icon: "none" });
       return;
     }
-    wxPhoneCodeLogin(role, "17628381307");
+    wxPhoneCodeLogin(role, "17628381310");
   };
   return (
     <PageWithTabBar className="flex flex-col items-center">
-      <View className="mt-[98px]">
-        <Image src={SignLogo} className="w-[306px] h-[108px]" />
-      </View>
+      <View className="flex-grow">
+        <View className="mt-[98px]">
+          <Image src={SignLogo} className="w-[306px] h-[108px]" />
+        </View>
 
-      <View className="mt-[98px] flex flex-col items-center w-[364px]">
-        <Button
-          onClick={loginHandler}
-          // openType="getPhoneNumber"
-          // onGetPhoneNumber={(e) => console.log(e)}
-          type="primary"
-          round
-          block
-          size="large"
-        >
-          手机号一键登录
-        </Button>
-
-        {role !== "proxy" && (
-          <Text
-            onClick={() => {
-              gotoPasswordSignIn(role);
-            }}
-            className="text-primary font-extrabold mt-[24px]"
-          >
-            账号密码登录
-          </Text>
-        )}
-        {role === "proxy" && (
-          <View className="w-full mt-[48px]">
+        <View className="mt-[98px] flex flex-col items-center w-[364px]">
+          {role !== "worker" && (
             <Button
-              onClick={() => gotoSignUp(role)}
+              onClick={loginHandler}
+              // openType="getPhoneNumber"
+              // onGetPhoneNumber={(e) => console.log(e)}
               type="primary"
               round
               block
               size="large"
-              plain
-              hairline
             >
-              注册
+              手机号一键登录
             </Button>
-          </View>
-        )}
-      </View>
+          )}
 
-      <View className={classNames(styles.override, "px-[48px] mt-[512px]")}>
+          {role !== "proxy" && (
+            <Text
+              onClick={() => {
+                gotoPasswordSignIn(role);
+              }}
+              className="text-primary font-extrabold mt-[24px]"
+            >
+              账号密码登录
+            </Text>
+          )}
+
+          {role === "proxy" && (
+            <View className="w-full mt-[48px]">
+              <Button
+                onClick={() => gotoSignUp(role)}
+                type="primary"
+                round
+                block
+                size="large"
+                plain
+                hairline
+              >
+                注册
+              </Button>
+            </View>
+          )}
+        </View>
+      </View>
+      <View className={classNames(styles.override, "px-[48px]")}>
         <Radio
           onChange={({ detail }) => {
             setAgreeFlag((prev) => (prev ? undefined : detail));

@@ -17,10 +17,20 @@ export const useSwitchTab = () => {
     dispatch(updateActivePage("/pages/Certificate/index"));
   };
 
+  const gotoWorkSpaceTab = () => {
+    dispatch(updateActivePage("/pages/WorkSpace/index"));
+  };
+
+  const gotoWriteoffTab = () => {
+    dispatch(updateActivePage("/pages/Writeoff/index"));
+  };
+
   return {
     gotoHomeTab,
     gotoMedicineTab,
     gotoMyTab,
-    gotoCertificateTab
+    gotoCertificateTab,
+    gotoWorkSpaceTab,
+    gotoWriteoffTab
   };
 };

@@ -3,10 +3,15 @@ import utils from "src/utils";
 import { useRequest } from "taro-hooks";
 
 export const useSignUp = (role) => {
-  const { run } = useRequest(
-    role === "patient"
-      ? apis.user.patientSignUp
-      : apis.user.medicineProxySignUp,
+  const { run: patientSignUp } = useRequest(apis.user.patientSignUp, {
+    manual: true,
+    onSuccess() {
+      utils.navigator.gotoLogin(role);
+    }
+  });
+
+  const { run: medicineProxySignUp } = useRequest(
+    apis.user.medicineProxySignUp,
     {
       manual: true,
       onSuccess() {
@@ -15,5 +20,5 @@ export const useSignUp = (role) => {
     }
   );
 
-  return { signUpHandler: run };
+  return { patientSignUp, medicineProxySignUp };
 };

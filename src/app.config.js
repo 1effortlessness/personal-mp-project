@@ -4,7 +4,9 @@ export default defineAppConfig({
     "pages/index/index",
     "pages/Medicine/index",
     "pages/Certificate/index",
-    "pages/My/index"
+    "pages/My/index",
+    "pages/WorkSpace/index",
+    "pages/Writeoff/index"
   ],
   window: {
     backgroundTextStyle: "light",
@@ -33,15 +35,20 @@ export default defineAppConfig({
       pages: [
         // "AdminIndex/index",
         // "AdminMy/index",
-        // "ReceivedDrugList/index",
-        // "DrugReceivedDetail/index",
+        "ReceivedDrugList/index",
+        "DrugReceivedDetail/index",
         "WriteOffForm/index"
       ]
     },
     {
       root: "proxy-packages",
       name: "proxy",
-      pages: ["ProxyGetAccountInfo/index", "AcceptProxy/index"]
+      pages: [
+        "ProxyGetAccountInfo/index",
+        "AcceptProxy/index",
+        "FollowDoctorList/index",
+        "FollowDoctor/index"
+      ]
     },
     {
       root: "patient-packages",
@@ -67,6 +74,14 @@ export default defineAppConfig({
       {
         text: "我的",
         pagePath: "pages/My/index"
+      },
+      {
+        text: "工作台",
+        pagePath: "pages/WorkSpace/index"
+      },
+      {
+        text: "核销记录",
+        pagePath: "pages/Writeoff/index"
       }
     ]
   }

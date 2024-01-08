@@ -4,28 +4,34 @@ import MedicineBgView, {
 import { Button } from "@antmjs/vantui";
 import { View } from "@tarojs/components";
 import Taro, { useRouter } from "@tarojs/taro";
-import { useFetchAccreditInfo } from "./useFetchAccreditInfo";
 import utils from "src/utils";
-
+import apis from "src/apis";
+import { useRequest } from "taro-hooks";
+import { useDispatch } from "react-redux";
+import { setProxyAccountInfo } from "src/store/modules/medicineProxy";
 /** @description 药代接受代操作 */
 const AcceptProxy = () => {
   const router = useRouter();
   const fromRole = router.params.fromRole;
   const token = router.params.token;
-  const { runAsync, loading } = useFetchAccreditInfo();
-
+  const dispatch = useDispatch();
+  const { run: acceptProxy } = useRequest(apis.medicine.acceptProxy, {
+    manual: true,
+    onSuccess(res, [role]) {
+      dispatch(setProxyAccountInfo(res.result));
+      utils.navigator.gotoProxyGetAccount(role);
+    }
+  });
   const acceptProxyHandler = () => {
     if (!fromRole || !token) {
       Taro.showToast({ icon: "none", title: "请检查入口参数" });
       return;
     }
-    runAsync(fromRole, token).then(() => {
-      utils.navigator.gotoProxyGetAccount(fromRole);
-    });
+    acceptProxy(fromRole, token);
   };
   return (
     <MedicineBgView noTabbar>
-      <DescCard title="" className="mt-[608px] flex flex-col items-center">
+      <DescCard title="" className="flex flex-col items-center">
         XXX授权您，代为参与活动
       </DescCard>
 

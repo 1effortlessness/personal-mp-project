@@ -3,13 +3,15 @@ import auth from "./modules/auth";
 import tabbar from "./modules/tabbar";
 import user from "./modules/user";
 import medicineProxy from "./modules/medicineProxy";
+import coupon from "./modules/coupon";
 // redux root file
 const store = configureStore({
   reducer: {
     auth,
     tabbar,
     user,
-    medicineProxy
+    medicineProxy,
+    coupon
   }
 });
 export default store;

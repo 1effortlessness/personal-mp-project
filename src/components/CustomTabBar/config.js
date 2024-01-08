@@ -51,11 +51,28 @@ export const ProxyTabBarConfig = [
     path: "pages/index/index"
   },
   {
-    text: "兑换券",
-    key: "certificate",
-    activeIcon: 兑换券active,
-    icon: 兑换券,
-    path: "pages/Certificate/index"
+    text: "我的",
+    key: "my",
+    activeIcon: 我的active,
+    icon: 我的,
+    path: "pages/My/index"
+  }
+];
+
+export const WorkerTabBarConfig = [
+  {
+    text: "工作台",
+    key: "workSpace",
+    activeIcon: 工作区active,
+    icon: 工作区,
+    path: "pages/WorkSpace/index"
+  },
+  {
+    text: "核销记录",
+    key: "writeoff",
+    activeIcon: 核销记录active,
+    icon: 核销记录,
+    path: "pages/Writeoff/index"
   },
   {
     text: "我的",
