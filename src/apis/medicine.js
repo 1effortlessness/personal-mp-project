@@ -82,7 +82,7 @@ export const getApplyMedicineMaterialsReview = (role) => {
     url = "/doctor/application";
   }
   return request({
-    method: "post",
+    method: "get",
     url,
     data: {}
   });

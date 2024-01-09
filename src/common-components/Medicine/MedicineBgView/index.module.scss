@@ -12,3 +12,7 @@
 .safeAreaView {
   height: calc(100vh - 100px - env(safe-area-inset-bottom));
 }
+
+.bgBottom {
+  height: calc(100vh - 100px - env(safe-area-inset-bottom) - 772px);
+}

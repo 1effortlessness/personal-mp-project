@@ -4,14 +4,12 @@ import { View, ScrollView } from "@tarojs/components";
 import { Colors } from "src/config/theme";
 import { useRequest } from "taro-hooks";
 import apis from "src/apis";
-import { useSelector } from "react-redux";
-import { userSelector } from "src/store/modules/user";
 
 definePageConfig({
   navigationBarTitleText: "核销记录"
 });
 function Writeoff() {
-  const { run, params } = useRequest(apis.writeoff.getWriteoffList, {
+  const { runAsync, params, data } = useRequest(apis.writeoff.getWriteoffList, {
     defaultParams: [
       {
         pageNum: 1,
@@ -22,7 +20,6 @@ function Writeoff() {
     debounceWait: 300
   });
   console.log(params, "params");
-  const listData = [1, 2, 3];
   return (
     <PageWithTabBar className="h-screen relative flex flex-col items-center write-off">
       <View className="w-full px-[48px] mt-[48px]">
@@ -31,18 +28,25 @@ function Writeoff() {
           background={Colors.background.under}
           placeholder="请输入手机号搜索"
           inputAlign="center"
-          onChange={(e) => run({ ...params?.[0], mobile: e.detail })}
+          onChange={(e) => runAsync({ ...params?.[0], mobile: e.detail })}
         />
       </View>
 
       <ScrollView scrollY className="flex-grow relative">
         <View className="absolute inset-0 px-5 pt-5 flex flex-col gap-[40px]">
-          {listData.map((item) => {
+          {data?.result.content.map((item) => {
             return <WriteOffItem key={item} />;
           })}
           <InfiniteScroll
-            loadMore={() => {
-              return run({ ...params?.[0], page: params?.[0].page + 1 });
+            loadMore={async () => {
+              const data = await runAsync({
+                ...params?.[0],
+                pageNum: params?.[0].pageNum + 1
+              });
+              if (data?.result?.content.length < 10) {
+                return Promise.resolve("complete");
+              }
+              return Promise.resolve("loading");
             }}
           />
         </View>

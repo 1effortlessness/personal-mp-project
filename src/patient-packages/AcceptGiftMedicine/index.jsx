@@ -3,13 +3,17 @@ import { Button } from "@antmjs/vantui";
 import MedicineBgView, {
   DescCard
 } from "src/common-components/Medicine/MedicineBgView";
+import { useRouter } from "@tarojs/taro";
+import utils from "src/utils";
 
 /** @description 接受转增 */
 const AcceptGiftMedicine = () => {
+  const router = useRouter();
+
   return (
     <MedicineBgView noTabbar>
-      <DescCard title="" className="mt-[608px] flex flex-col items-center">
-        XXX医生给您赠送一支
+      <DescCard title="" className="flex flex-col items-center">
+        {router.params?.doctorName} 医生给您赠送一支
         <View>地舒单抗注射液（鲁可欣®）</View>
       </DescCard>
 
@@ -25,7 +29,14 @@ const AcceptGiftMedicine = () => {
         </View>
       </DescCard>
       <View className="w-full my-[48px]">
-        <Button type="primary" block round>
+        <Button
+          type="primary"
+          block
+          round
+          onClick={() =>
+            utils.navigator.gotoSignUp("patient", router.params?.token)
+          }
+        >
           注册领药
         </Button>
       </View>

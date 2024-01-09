@@ -23,3 +23,11 @@ export const dispensingConfirm = (id) => {
     data: { id }
   });
 };
+
+export const getShopList = (params) => {
+  return request({
+    method: "get",
+    url: "/shop/list",
+    data: params
+  });
+};

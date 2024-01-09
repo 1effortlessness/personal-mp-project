@@ -2,7 +2,6 @@ import { Text, View } from "@tarojs/components";
 import dayjs from "dayjs";
 import { Button } from "@antmjs/vantui";
 import Taro from "@tarojs/taro";
-import Container from "src/common-components/WorkerSpace/Container";
 import PageWithTabBar from "src/components/PageWithTabBar";
 import apis from "src/apis";
 import { useRequest } from "taro-hooks";
@@ -14,26 +13,14 @@ definePageConfig({
 
 function ReceivedDrugList() {
   const { data } = useRequest(apis.shop.getDispensingList);
-  const items = [
-    {
-      sendDate: "2023-12-20",
-      number: 100,
-      status: "confirmed"
-    },
-    {
-      sendDate: "2023-12-30",
-      number: 100,
-      status: "unconfirmed"
-    }
-  ];
   return (
     <PageWithTabBar>
       <View className="flex flex-col gap-[40px] p-[48px]">
-        {items.map((item, index) => {
+        {data.result.map((item, index) => {
           return (
             <DrugReceiptItem
               onTap={() => {
-                utils.navigator.gotoDrugReceivedDetail();
+                utils.navigator.gotoDrugReceivedDetail(item);
               }}
               {...item}
               key={index}
@@ -45,16 +32,16 @@ function ReceivedDrugList() {
   );
 }
 
-function DrugReceiptItem({ sendDate, number, status, onTap }) {
-  const confirmed = status === "confirmed";
+function DrugReceiptItem({ createAt, status, inventory, onTap }) {
+  const confirmed = status == 1;
   const items = [
     {
       label: "发货时间",
-      value: dayjs(sendDate).format("YYYY-MM-DD HH:mm:ss")
+      value: dayjs(createAt).format("YYYY-MM-DD HH:mm:ss")
     },
     {
       label: "数量",
-      value: number
+      value: inventory
     },
     {
       label: "状态",

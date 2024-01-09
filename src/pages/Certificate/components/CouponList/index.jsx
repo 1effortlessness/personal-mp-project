@@ -1,4 +1,4 @@
-import { View } from "@tarojs/components";
+import { View, Text } from "@tarojs/components";
 import { PullToRefresh } from "@antmjs/vantui";
 import PageWithTabBar from "@/components/PageWithTabBar";
 import CertificateCard from "../CertificateCard";
@@ -28,11 +28,19 @@ const CouponList = () => {
     >
       <PageWithTabBar>
         <View className="flex justify-center mt-[48px]">
-          <CertificateCard />
+          {data?.result ? <CertificateCard {...data?.result} /> : <NoResult />}
         </View>
         {/* <InfiniteScroll loadMore={loadMore} ref={InfiniteScrollInstance} /> */}
       </PageWithTabBar>
     </PullToRefresh>
+  );
+};
+
+const NoResult = () => {
+  return (
+    <View className="mt-[270px] flex justify-center">
+      <Text>您暂无兑换券</Text>
+    </View>
   );
 };
 

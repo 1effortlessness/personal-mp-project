@@ -4,6 +4,17 @@
     "miniprogram": {
       "list": [
         {
+          "name": "",
+          "pathName": "proxy-packages/FollowDoctorList/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
           "name": "接受赠药页",
           "pathName": "patient-packages/AcceptGiftMedicine/index",
           "query": "token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJEb2N0b3I6e1wiaWRcIjoyMixcIm5hbWVcIjpcIuWFg-ael1wiLFwibW9iaWxlXCI6XCIxNzYyODM4MTMwN1wiLFwiaG9zcGl0YWxcIjpcIuS6pOmAmuWMu-mZolwiLFwibWlmZW5JZFwiOjM1NzYyLFwiZW5hYmxlZFwiOnRydWUsXCJwcm94eVwiOmZhbHNlfSIsImV4cCI6MTcwNTMxMzI4NSwiaWF0IjoxNzA0NzA4NDg1fQ.sRHiXAEzfjVU3-_POL68ZQoR-RRQ8b756QNV0zUgW7f8ffNckA7sRBs4zEr1AsRFMogXdH8NgpMUDgBOiRPugg&doctorName=yuanlin",

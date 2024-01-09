@@ -23,10 +23,19 @@ const SignIn = () => {
       Taro.showToast({ title: "请同意协议", icon: "none" });
       return;
     }
-    wxPhoneCodeLogin(role, "17628381310");
+    // 测试使用
+    let phone = "17628380001";
+    if (role === "proxy") {
+      phone = "17628381307";
+    }
+
+    if (role === "worker") {
+      phone = "17628381301";
+    }
+    wxPhoneCodeLogin(role, phone);
   };
   return (
-    <PageWithTabBar className="flex flex-col items-center">
+    <PageWithTabBar className="flex flex-col items-center h-full">
       <View className="flex-grow">
         <View className="mt-[98px]">
           <Image src={SignLogo} className="w-[306px] h-[108px]" />
@@ -75,7 +84,7 @@ const SignIn = () => {
           )}
         </View>
       </View>
-      <View className={classNames(styles.override, "px-[48px]")}>
+      <View className={classNames(styles.override, "px-[48px] mb-[48px]")}>
         <Radio
           onChange={({ detail }) => {
             setAgreeFlag((prev) => (prev ? undefined : detail));

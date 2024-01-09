@@ -238,7 +238,7 @@ const ApplyMedicineInfo = () => {
             </>
           )}
 
-          <View className="my-[48px]">
+          <View className="mt-[48px]">
             <Button block type="primary" round formType="submit">
               提交
             </Button>

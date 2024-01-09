@@ -31,12 +31,8 @@ const queryStringify = (params) => {
   return query.slice(0, -1);
 };
 
-const login = () => {
-  route("Login", { redirect: true });
-};
-
 export const gotoLogin = (role) => {
-  route("SignIn", { redirect: false, params: { role }, packages: "doctor" });
+  route("SignIn", { redirect: false, params: { role }, packages: "common" });
 };
 
 export const gotoPasswordSignIn = (role) => {
@@ -92,10 +88,11 @@ export const gotoReceivedDrugList = () => {
   });
 };
 
-export const gotoDrugReceivedDetail = () => {
+export const gotoDrugReceivedDetail = (params) => {
   return route("DrugReceivedDetail", {
     redirect: false,
-    packages: "admin"
+    packages: "admin",
+    params
   });
 };
 
@@ -110,5 +107,12 @@ export const gotoFollowDoctor = () => {
   return route("FollowDoctor", {
     redirect: false,
     packages: "proxy"
+  });
+};
+
+export const gotoCertificateCode = () => {
+  return route("CertificateCOde", {
+    redirect: false,
+    packages: "doctor"
   });
 };

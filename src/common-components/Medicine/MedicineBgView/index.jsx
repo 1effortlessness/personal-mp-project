@@ -12,20 +12,23 @@ const MedicineBgView = ({ children, noTabbar, ...viewProps }) => {
     <View
       {...viewProps}
       style={viewProps.style}
-      className={classNames("h-full bg-cover", viewProps.className)}
+      className={classNames(
+        "safe-area-view bg-cover overflow-hidden",
+        viewProps.className
+      )}
     >
       <View className="absolute z-0">
         <Image src={视图bg2} width={750} height={772} />
       </View>
       <View
-        className="h-[675px] w-full absolute top-[772px]"
+        className={classNames("w-full absolute top-[772px]", styles.bgBottom)}
         style={{ background: bottomBgColor }}
       />
       <ScrollView
         scrollY
         className={classNames(
           "z-10 relative",
-          noTabbar ? "h-screen" : styles.safeAreaView
+          noTabbar ? "h-screen" : "safe-area-view"
         )}
       >
         <Logo />

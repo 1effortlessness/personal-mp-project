@@ -6,12 +6,19 @@ import 兑换券bg from "@/assets/images/兑换券bg.png";
 import { Button } from "@antmjs/vantui";
 import classNames from "classnames";
 import { useMemo } from "react";
-import Taro from "@tarojs/taro";
+import config from "src/config";
+import dayjs from "dayjs";
+import utils from "src/utils";
 
-const CertificateCard = ({ used, expired, cardConfig, ...viewProps }) => {
+const CertificateCard = ({ used, proxyName, createTime, ...viewProps }) => {
+  const expired = !dayjs().isBefore(config.expiredTime);
   const isGray = useMemo(() => {
     return used || expired;
-  }, [used, expired]);
+  }, [expired, used]);
+
+  const useTimeLimitText = `${utils.date.dateFormat(
+    createTime
+  )} 至 ${utils.date.dateFormat(config.expiredTime)}`;
 
   // Taro.showTabBar();
   return (
@@ -52,15 +59,20 @@ const CertificateCard = ({ used, expired, cardConfig, ...viewProps }) => {
         )}
         {/* absolute组件 */}
         <InfoCell label="兑换券数量" value={1} />
-        <InfoCell className="mt-1" label="兑换券数量" value={1} />
-        <InfoCell className="mt-1" label="兑换券数量" value={1} />
+        <InfoCell className="mt-1" label="代领人" value={proxyName || "无"} />
+        <InfoCell className="mt-1" label="使用期限" value={useTimeLimitText} />
 
         <CardDivider />
         <View className="flex items-center mt-[16px]">
           <Text className=" text-red font-bold text-sm">
             *请您先去药店预约，再去领药
           </Text>
-          <Button size="small" type="primary">
+          <Button
+            disabled={isGray}
+            onTap={utils.navigator.gotoCertificateCode}
+            size="small"
+            type="primary"
+          >
             去使用
           </Button>
         </View>

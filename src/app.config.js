@@ -16,10 +16,14 @@ export default defineAppConfig({
   },
   subpackages: [
     {
+      root: "common-packages",
+      name: "common",
+      pages: ["SignIn/index"]
+    },
+    {
       root: "doctor-packages",
       name: "doctor",
       pages: [
-        "SignIn/index",
         "ByPasswordSignIn/index",
         "SignUp/index",
         "ApplyMedicineInfo/index",

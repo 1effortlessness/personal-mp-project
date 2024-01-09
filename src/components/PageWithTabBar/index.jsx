@@ -1,4 +1,4 @@
-import { View } from "@tarojs/components";
+import { ScrollView, View } from "@tarojs/components";
 import CustomTabBar from "@/components/CustomTabBar";
 import "./index.scss";
 import classNames from "classnames";
@@ -8,12 +8,13 @@ import { themeVars } from "src/config/theme";
 const PageWithTabBar = ({ children, ...viewProps }) => {
   return (
     <ConfigProvider className="h-full" themeVars={themeVars}>
-      <View
+      <ScrollView
+        scrollY
         {...viewProps}
-        className={classNames("safe-area-view h-full", viewProps.className)}
+        className="safe-area-view w-full"
       >
-        {children}
-      </View>
+        <View {...viewProps}>{children}</View>
+      </ScrollView>
       <CustomTabBar />
     </ConfigProvider>
   );

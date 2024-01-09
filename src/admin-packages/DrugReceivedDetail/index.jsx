@@ -5,11 +5,18 @@ import CardContainer from "src/common-components/WorkerSpace/CardContainer/CardC
 import { useRequest } from "taro-hooks";
 import apis from "src/apis";
 import utils from "src/utils";
+import { useRouter } from "@tarojs/taro";
 
 definePageConfig({
   navigationBarTitleText: "援助药收货详情"
 });
 function DrugReceivedDetail() {
+  const router = useRouter();
+
+  const sendTime = router.params?.sendTime;
+  const inventory = router.params?.inventory;
+  const id = router.params?.id;
+
   const { run } = useRequest(apis.shop.dispensingConfirm, {
     manual: true,
     onSuccess() {
@@ -20,7 +27,7 @@ function DrugReceivedDetail() {
   const items = [
     {
       label: "发货时间",
-      value: "2023年12月15日  20:23:13"
+      value: utils.date.dateFormat(sendTime, "YYYY年MM月DD日 hh:mm:ss")
     },
     // content
     {
@@ -29,7 +36,7 @@ function DrugReceivedDetail() {
     },
     {
       label: "数量",
-      value: "200支"
+      value: inventory
     }
   ];
   return (
@@ -55,7 +62,7 @@ function DrugReceivedDetail() {
             取消
           </Button>
           <Button
-            onClick={() => run("id")}
+            onClick={() => run(id)}
             type="primary"
             block
             size="large"

@@ -8,6 +8,10 @@ page {
   @apply bg-under;
 }
 
+.safe-area-view {
+  height: calc(100vh - 100px - env(safe-area-inset-bottom));
+}
+
 .vant-form-formItem {
   padding: 12px 0 !important;
   margin: 0 !important;
